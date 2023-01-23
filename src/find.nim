@@ -22,8 +22,28 @@ type
   StreamFinder* {.pure.} = enum
     Local, FTP, S3, WebDav
 
+  FileSizeOp* {.pure.} = enum
+    EQ = "=="
+    NE = "!="
+    LT = "<"
+    GT = ">"
+    LTE = "<="
+    GTE = ">="
+
+  FileSizeUnit* {.pure.} = enum
+    Bytes = "Bytes"
+    Kilobytes = "KB"
+    Megabytes = "MB"
+    Gigabytes = "GB"
+    Terabytes = "TB"
+
+  FSize = ref object
+    op: FileSizeOp
+    unit: FileSizeUnit
+    size: float
+
   File* = ref object
-    path: string
+    path, absPath: string
     info: FileInfo
 
   Directory = object
@@ -39,12 +59,19 @@ type
       dirResults: OrderedTableRef[string, Directory]
 
   Filters* = tuple[
-    path: string,
     isRecursive: bool,
     ignoreHiddenFiles: bool,
     ignoreUnreadableDirectories: bool,
     ignoreVCSFiles: bool,
-    extensions: seq[string]
+  ]
+
+  Criterias* = tuple[
+    path: string,
+    patterns: seq[string],
+    extensions: seq[string],
+
+    size: tuple[min, max: FSize],
+    bySize: bool
   ]
 
   Finder* = ref object
@@ -55,21 +82,19 @@ type
       ## Where to search 
     searchType: SearchType
       ## What to search, files or directories
+    criteria: Criterias
     filters: Filters
-      ## Filters for current Finder instance
     results: Results
-      ## Holds an instance of `Results`
-    total: int
-      ## Holds total results
+      ## An instance of `Results`
 
-const vcsPatterns = [".svn", "_svn", "CVS", "_darcs",
-                    ".arch-params", ".monotone", ".bzr", ".git", ".hg"]
+const vcsPatterns = [".svn", "_svn", "CVS", "_darcs", ".arch-params",
+                      ".monotone", ".bzr", ".git", ".hg"]
 
 proc finder*(path = ".", driver = Native, streamType = Local,
             searchType = SearchInFiles, isRecursive = false): Finder =
   var f = Finder(driver: driver, streamType: streamType, searchType: searchType)
-  # setup filters
-  f.filters.path = path
+  f.criteria.path = path
+  f.criteria.patterns = @["*"]
   f.filters.isRecursive = isRecursive
   f.filters.ignoreVCSFiles = true
   result = f
@@ -80,18 +105,15 @@ proc cmd(inputCmd: string, inputArgs: openarray[string]): auto {.discardable.} =
 
 proc name*(finder: Finder, pattern: string): Finder =
   ## Add one file name for searching
-  result = finder
-
-proc name*(finder: Finder, fileNames: openarray[string]): Finder =
-  ## Add one or more file names to the current search criteria
+  finder.criteria.patterns.add pattern
   result = finder
 
 proc ext*(finder: Finder, fileExtension: varargs[string]): Finder =
-  finder.filters.extensions = toSeq fileExtension
+  finder.criteria.extensions = toSeq fileExtension
   result = finder
 
 proc ext*(finder: Finder, fileExtensions: openarray[string]): Finder =
-  finder.filters.extensions = toSeq fileExtensions
+  finder.criteria.extensions = toSeq fileExtensions
   result = finder
 
 proc lastTimeModified*[F: Finder](finder: F, since: string): F =
@@ -138,6 +160,91 @@ proc sortByModifiedTime*[F: Finder](finder: F): F =
   ## Sorts files and directories by the last modified time
 
 #
+# Forward
+#
+proc getSize*(file: File): string
+
+#
+# Criteria API
+# Public proc to refine your search
+proc `==`*[S: FSize](fs: S): S =
+  fs.op = EQ
+  result = fs
+
+proc `!=`*[S: FSize](fs: S): S =
+  fs.op = NE
+  result = fs
+
+proc `<`*[S: FSize](fs: S): S =
+  fs.op = LT
+  result = fs
+
+proc `<=`*[S: FSize](fs: S): S =
+  fs.op = LTE
+  result = fs
+
+proc `>`*[S: FSize](fs: S): S =
+  fs.op = GT
+  result = fs
+
+proc `>=`*(fs: FSize): FSize =
+  fs.op = GTE
+  result = fs
+
+proc bytes*(i: int): FSize =
+  result = FSize(size: i.toFloat, unit: Bytes)
+
+proc kilobytes*(i: int): FSize =
+  result = FSize(size: i.toFloat, unit: Kilobytes)
+
+proc megabytes*(i: int): FSize =
+  result = FSize(size: i.toFloat, unit: Megabytes)
+
+proc gigabytes*(i: int): FSize =
+  result = FSize(size: i.toFloat, unit: Gigabytes)
+
+proc terabytes*(i: int): FSize =
+  result = FSize(size: i.toFloat, unit: Terabytes)
+
+proc size*[F: Finder](finder: F, fs: FSize): F =
+  finder.criteria.size.min = fs
+  finder.criteria.bySize = true
+  result = finder
+
+proc size*[F: Finder](finder: F, min, max: FSize): F =
+  finder.criteria.size.min = min
+  finder.criteria.size.max = max
+  finder.criteria.bySize = true
+  result = finder
+
+#
+# Results & Filters API
+# Public procs to refine or iterate search results.
+# These filters are applied after getting a Results instance.
+proc size*[R: Results](res: R): R =
+  ## Filter current results by size
+
+iterator files*(res: Results): File =
+  for k, f in res.fileResults.pairs:
+    yield f
+
+iterator dirs*(res: Results): Directory =
+  for k, d in res.dirResults.pairs:
+    yield d
+
+proc len*(res: Results): int =
+  ## Return the number of items in current `Results`.
+  case res.searchType:
+  of SearchInFiles:
+    result = res.fileResults.len
+  of SearchInDirectories:
+    result = res.dirResults.len
+
+proc count*(res: Results): int =
+  ## An alias for `len`
+  result = res.len
+
+#
 # File API
 #
 
@@ -155,14 +262,25 @@ proc getFileSize*(file: File): BiggestInt =
   ## Returns the file size of file (in bytes)
   result = file.info.size
 
+proc getSizeByUnit(file: File): tuple[size: float, unit: FileSizeUnit] =
+  if file.getFileSize == 0:
+    return
+  let
+    bytes = toBiggestFloat(file.getFileSize)
+    i = floor log2(bytes) / log2(toFloat 1000)
+    size = (bytes / pow(toFloat 1000, i))
+  result = (size, FileSizeUnit(i.toInt))
+
 proc getSize*(file: File): string =
   ## Returns the current file size of given File
   ## auto-converted to Bytes, KB, MB, GB, or TB.
-  var sizes = ["Bytes", "KB", "MB", "GB", "TB"];
-  let bytes = toBiggestFloat(file.getFileSize)
-  let i = floor log2(bytes) / log2(toFloat 1000)
-  let size = (bytes / pow(toFloat 1000, i))
-  result = $(size) & indent(sizes[i.toInt], 1)
+  let s = file.getSizeByUnit()
+  result = $(s.size) & indent($(s.unit), 1)
+
+proc getSize*(file: File, hideSizeLabel: bool): float =
+  ## Returns the current file size of given File as float value,
+  ## auto-converted to Bytes, KB, MB, GB or TB, without a label
+  result = file.getSizeByUnit().size
 
 proc getLastAccessTime*(file: File): Time =
   ## Returns the file's last read or write access time
@@ -182,30 +300,53 @@ proc recursive*[F: Finder](finder: F): F =
   finder.filters.isRecursive = true
   result = finder
 
+proc checkFileSize(finder: Finder, file: File): bool =
+  let fs = file.getSizeByUnit
+  if finder.criteria.size.min != nil:
+    let
+      min: FSize = finder.criteria.size.min
+      max: FSize = finder.criteria.size.max
+    result = case finder.criteria.size.min.op:
+              of EQ:    min.size == fs.size
+              of NE:    min.size != fs.size
+              of LT:    min.size < fs.size
+              of LTE:   min.size <= fs.size
+              of GT:    fs.size > min.size
+              of GTE:   fs.size >= min.size
+
 proc execNativeFinder(finder: Finder) =
   var res = Results(searchType: finder.searchType)
   case finder.searchType:
   of SearchInFiles:
     res.fileResults = newOrderedTable[string, File]()
-    var byExt = finder.filters.extensions.len != 0
-    for fpath in walkDirRec(finder.filters.path, yieldFilter = {pcFile},
+    var byExt = finder.criteria.extensions.len != 0
+    if finder.filters.isRecursive:
+      for dpath in walkDirRec(absolutePath(finder.criteria.path), yieldFilter = {pcDir},
                   followFilter = {pcDir}, relative = false, checkDir = false):
-      let f: tuple[dir, name, ext: string] = fpath.splitFile()
-      if byExt:
-        if f.ext in finder.filters.extensions:
-          res.fileResults[fpath] = File(path: fpath, info: getFileInfo(fpath))
-      else:
-        res.fileResults[fpath] = File(path: fpath, info: getFileInfo(fpath))
+        discard
+    else:
+      for pattern in finder.criteria.patterns:
+        for fpath in walkFiles(absolutePath(finder.criteria.path) / pattern):
+          let absPath = absolutePath(fpath)
+          # ignore hidden files
+          if finder.filters.ignoreVCSFiles:
+            if absPath.contains("/."): # this ignores all hidden dirs
+              continue                 # TODO find a better way to ignore files in hidden directories
+
+          let f: tuple[dir, name, ext: string] = fpath.splitFile()
+          if byExt:
+            # searching using ext() proc
+            if f.ext in finder.criteria.extensions:
+              res.fileResults[fpath] = File(path: fpath, absPath: absPath, info: getFileInfo(fpath))
+          else:
+            # searching using UNIX patterns
+            let thisFile = File(path: fpath, absPath: absPath, info: getFileInfo(fpath))
+            if finder.criteria.bySize:
+              if not checkFileSize(finder, thisFile):
+                continue
+            res.fileResults[fpath] = thisFile
   of SearchInDirectories:
     discard
-  # var byExtension = if ext.len == 0: false else: true
-  # for file in walkDirRec(path):
-  #   if file.isHidden: continue
-  #   if byExtension:
-  #     if file.endsWith(ext):
-  #       result.add(file)
-  #   else:
-  #     result.add file
   finder.results = res
 
 proc get*(finder: Finder): Results =
@@ -216,25 +357,9 @@ proc get*(finder: Finder): Results =
     of Remote: discard
   result = finder.results
 
-iterator files*(res: Results): File =
-  for k, f in res.fileResults.pairs:
-    yield f
-
-iterator dirs*(res: Results): Directory =
-  for k, d in res.dirResults.pairs:
-    yield d
-
-proc len*(res: Results): int =
-  case res.searchType:
-  of SearchInFiles:
-    result = res.fileResults.len
-  of SearchInDirectories:
-    result = res.dirResults.len
-
 when isMainModule:
-  let res = finder().ext(".nim").recursive.get
+  let res = finder("./examples").name("20*.txt").size(> 15.bytes, < 20.bytes).get
   for f in res.files():
     echo f.getPath()
-    echo f.getInfo()
     echo f.getSize()
-  echo res.len
+    # echo f.getInfo()
