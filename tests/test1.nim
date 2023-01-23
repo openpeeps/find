@@ -1,4 +1,4 @@
-import std/[unittest, strutils]
+import std/[unittest, strutils, re]
 import find
 
 let dir = "./examples"
@@ -29,3 +29,12 @@ test "can find by size (> 15.bytes)":
   for f in res.files:
     check "20.0 Bytes" in f.getSize() # string size with unit label
     check 20.0 == f.getSize(true)     # float size
+
+test "can find using regex":
+  let res = finder(dir).name(re"20[\w-]+\.txt").get
+  check res.len == 3
+
+test "can find using regex + size":
+  let res = finder(dir).name(re"20[\w-]+\.txt")
+                       .size(>= 20.bytes).get
+  check res.len == 1

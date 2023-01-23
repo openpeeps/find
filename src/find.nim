@@ -66,9 +66,8 @@ type
 
   Criterias* = tuple[
     path: string,
-    patterns: seq[string],
-    extensions: seq[string],
-
+    patterns, extensions: seq[string],
+    regexPatterns: seq[Regex],
     size: tuple[min, max: FSize],
     bySize: bool
   ]
@@ -104,6 +103,10 @@ proc cmd(inputCmd: string, inputArgs: openarray[string]): auto {.discardable.} =
 proc name*(finder: Finder, pattern: string): Finder =
   ## Add one file name for searching
   finder.criteria.patterns.add pattern
+  result = finder
+
+proc name*(finder: Finder, pattern: Regex): Finder =
+  finder.criteria.regexPatterns.add pattern
   result = finder
 
 proc ext*(finder: Finder, fileExtension: varargs[string]): Finder =
@@ -303,7 +306,7 @@ proc checkFileSize(finder: Finder, file: FileFinder): bool =
     let
       min: FSize = finder.criteria.size.min
       max: FSize = finder.criteria.size.max
-    result = case finder.criteria.size.min.op:
+    return case finder.criteria.size.min.op:
               of EQ:    min.size == fs.size
               of NE:    min.size != fs.size
               of LT:    min.size < fs.size
@@ -342,20 +345,30 @@ proc nativeFinder(finder: Finder) =
             res.putFile(fpath)
       else:
         # Searching using UNIX patterns
-        for pattern in finder.criteria.patterns:
-          for fpath in walkFiles(absolutePath(finder.criteria.path) / pattern):
-            let thisFile = FileFinder(path: fpath, info: getFileInfo(fpath))
-            if finder.criteria.bySize:
-              if not checkFileSize(finder, thisFile):
-                continue
-            res.fileResults[fpath] = thisFile
+        if finder.criteria.patterns.len != 0:
+          for pattern in finder.criteria.patterns:
+            for fpath in walkFiles(absolutePath(finder.criteria.path) / pattern):
+              let thisFile = FileFinder(path: fpath, info: getFileInfo(fpath))
+              if finder.criteria.bySize:
+                if not checkFileSize(finder, thisFile):continue
+              res.fileResults[fpath] = thisFile
+        elif finder.criteria.regexPatterns.len != 0:
+          for pattern in finder.criteria.regexPatterns:
+            for fpath in walkDirRec(absolutePath(finder.criteria.path), yieldFilter = {pcFile},
+                        followFilter = {pcDir}, relative = false, checkDir = false):
+              let f = FileFinder(path: fpath, info: getFileInfo(fpath))
+              if finder.criteria.bySize:
+                if not checkFileSize(finder, f): continue
+              if not re.match(fpath.extractFilename, pattern): continue
+              res.putFile(fpath)
   of SearchInDirectories:
     discard
   finder.results = res
 
 proc get*(finder: Finder): Results =
   ## Execute Finder query and return the results
-  if finder.criteria.patterns.len == 0:
+  if finder.criteria.patterns.len == 0 and
+      finder.criteria.regexPatterns.len == 0:
     finder.criteria.patterns = @["*"]
   case finder.driver:
     of Native: nativeFinder(finder)
@@ -364,7 +377,7 @@ proc get*(finder: Finder): Results =
   result = finder.results
 
 when isMainModule:
-  let res = finder("./examples").name("20*.txt").size(> 15.bytes, < 20.bytes).get
+  let res = finder("./examples/").name(re"20[\w-]+\.txt").size(> 15.bytes, < 20.bytes).get
   for f in res.files():
     echo f.getPath()
     echo f.getSize()
