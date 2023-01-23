@@ -1,4 +1,7 @@
-<p align="center"><img src=".github/logo.png" width="140px"><br>OpenPeep's repository template for developing libraries,<br>projects and other cool things</p>
+<p align="center">
+  <img src=".github/finder.png" width="64px"><br>
+  OpenPeep's repository template for developing libraries,<br>projects and other cool things
+</p>
 
 ## 😍 Key Features
 - [x] Made with Love
