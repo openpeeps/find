@@ -1,5 +1,5 @@
 <p align="center">
-  <img src=".github/logo.png" width="128px"><br>
+  <img src=".github/logo.png" width="90px"><br>
   OpenPeep's repository template for developing libraries,<br>projects and other cool things
 </p>
 
