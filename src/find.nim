@@ -1,13 +1,12 @@
-# Supranim is a simple MVC-style web framework for building
-# fast web applications, REST API microservices and other cool things.
+# Finds files and directories based on different criteria
 #
-# (c) 2021 Supranim is released under MIT License
+# (c) 2023 Find | MIT License
 #          George Lemon | Made by Humans from OpenPeep
-#          https://supranim.com   |    https://github.com/supranim
+#          https://github.com/supranim
 
 # https://github.com/symfony/symfony/blob/6.1/src/Symfony/Component/Finder/Finder.php#method_directories
 # https://symfony.com/doc/current/components/finder.html#files-or-directories
-import std/[os, osproc, tables, times, strutils, sequtils, math]
+import std/[os, osproc, tables, times, re, strutils, sequtils, math]
 
 type
   FinderType* {.pure.} = enum
@@ -42,8 +41,8 @@ type
     unit: FileSizeUnit
     size: float
 
-  File* = ref object
-    path, absPath: string
+  FileFinder* = ref object
+    path: string
     info: FileInfo
 
   Directory = object
@@ -54,7 +53,7 @@ type
     sortType: SortType
     case searchType: SearchType
     of SearchInFiles:
-      fileResults: OrderedTableRef[string, File]
+      fileResults: OrderedTableRef[string, FileFinder]
     of SearchInDirectories:
       dirResults: OrderedTableRef[string, Directory]
 
@@ -94,7 +93,6 @@ proc finder*(path = ".", driver = Native, streamType = Local,
             searchType = SearchInFiles, isRecursive = false): Finder =
   var f = Finder(driver: driver, streamType: streamType, searchType: searchType)
   f.criteria.path = path
-  f.criteria.patterns = @["*"]
   f.filters.isRecursive = isRecursive
   f.filters.ignoreVCSFiles = true
   result = f
@@ -162,7 +160,7 @@ proc sortByModifiedTime*[F: Finder](finder: F): F =
 #
 # Forward
 #
-proc getSize*(file: File): string
+proc getSize*(file: FileFinder): string
 
 #
 # Criteria API
@@ -224,7 +222,7 @@ proc size*[F: Finder](finder: F, min, max: FSize): F =
 proc size*[R: Results](res: R): R =
   ## Filter current results by size
 
-iterator files*(res: Results): File =
+iterator files*(res: Results): FileFinder =
   for k, f in res.fileResults.pairs:
     yield f
 
@@ -245,24 +243,23 @@ proc count*(res: Results): int =
   result = res.len
 
 #
-# File API
+# FileFinder API
 #
 
-proc getInfo*(file: File): FileInfo =
+proc getInfo*(file: FileFinder): FileInfo =
   ## Returns an instance of `FileInfo`
   ## https://nim-lang.org/docs/os.html#FileInfo
   result = file.info
 
-proc getPath*(file: File, toAbsolutePath = true): string =
-  ## Returns path on disk for given File. Set `toAbsolutePath` false
-  ## to return the relative path. 
-  result = if toAbsolutePath: file.path.absolutePath() else: file.path
+proc getPath*(file: FileFinder): string =
+  ## Returns path on disk for given FileFinder 
+  result = file.path
 
-proc getFileSize*(file: File): BiggestInt =
+proc getFileSize*(file: FileFinder): BiggestInt =
   ## Returns the file size of file (in bytes)
   result = file.info.size
 
-proc getSizeByUnit(file: File): tuple[size: float, unit: FileSizeUnit] =
+proc getSizeByUnit(file: FileFinder): tuple[size: float, unit: FileSizeUnit] =
   if file.getFileSize == 0:
     return
   let
@@ -271,22 +268,22 @@ proc getSizeByUnit(file: File): tuple[size: float, unit: FileSizeUnit] =
     size = (bytes / pow(toFloat 1000, i))
   result = (size, FileSizeUnit(i.toInt))
 
-proc getSize*(file: File): string =
-  ## Returns the current file size of given File
+proc getSize*(file: FileFinder): string =
+  ## Returns the current file size of given FileFinder
   ## auto-converted to Bytes, KB, MB, GB, or TB.
   let s = file.getSizeByUnit()
   result = $(s.size) & indent($(s.unit), 1)
 
-proc getSize*(file: File, hideSizeLabel: bool): float =
-  ## Returns the current file size of given File as float value,
+proc getSize*(file: FileFinder, hideSizeLabel: bool): float =
+  ## Returns the current file size of given FileFinder as float value,
   ## auto-converted to Bytes, KB, MB, GB or TB, without a label
   result = file.getSizeByUnit().size
 
-proc getLastAccessTime*(file: File): Time =
+proc getLastAccessTime*(file: FileFinder): Time =
   ## Returns the file's last read or write access time
   result = file.info.lastAccessTime
 
-proc getLastModificationTime*(file: File): Time =
+proc getLastModificationTime*(file: FileFinder): Time =
   ## Returns the file's last read or write access time
   result = file.info.lastWriteTime
 
@@ -300,7 +297,7 @@ proc recursive*[F: Finder](finder: F): F =
   finder.filters.isRecursive = true
   result = finder
 
-proc checkFileSize(finder: Finder, file: File): bool =
+proc checkFileSize(finder: Finder, file: FileFinder): bool =
   let fs = file.getSizeByUnit
   if finder.criteria.size.min != nil:
     let
@@ -314,33 +311,40 @@ proc checkFileSize(finder: Finder, file: File): bool =
               of GT:    fs.size > min.size
               of GTE:   fs.size >= min.size
 
-proc execNativeFinder(finder: Finder) =
+proc putFile(res: Results, fpath: string) =
+  res.fileResults[fpath] = FileFinder(path: fpath, info: getFileInfo(fpath))
+
+proc isHiddenFile(finder: Finder, absPath: string): bool =
+  # ignore hidden files
+  # TODO find a better way to check hidden files.
+  result = absPath.contains("/.")
+
+proc nativeFinder(finder: Finder) =
   var res = Results(searchType: finder.searchType)
   case finder.searchType:
   of SearchInFiles:
-    res.fileResults = newOrderedTable[string, File]()
+    res.fileResults = newOrderedTable[string, FileFinder]()
     var byExt = finder.criteria.extensions.len != 0
     if finder.filters.isRecursive:
       for dpath in walkDirRec(absolutePath(finder.criteria.path), yieldFilter = {pcDir},
                   followFilter = {pcDir}, relative = false, checkDir = false):
         discard
     else:
-      for pattern in finder.criteria.patterns:
-        for fpath in walkFiles(absolutePath(finder.criteria.path) / pattern):
-          let absPath = absolutePath(fpath)
-          # ignore hidden files
-          if finder.filters.ignoreVCSFiles:
-            if absPath.contains("/."): # this ignores all hidden dirs
-              continue                 # TODO find a better way to ignore files in hidden directories
-
-          let f: tuple[dir, name, ext: string] = fpath.splitFile()
-          if byExt:
-            # searching using ext() proc
-            if f.ext in finder.criteria.extensions:
-              res.fileResults[fpath] = File(path: fpath, absPath: absPath, info: getFileInfo(fpath))
-          else:
-            # searching using UNIX patterns
-            let thisFile = File(path: fpath, absPath: absPath, info: getFileInfo(fpath))
+      if byExt:
+        # Searching using ext() proc
+        for pattern in finder.criteria.patterns:
+          for fpath in walkFiles(absolutePath(finder.criteria.path) / pattern):
+            if isHiddenFile(finder, fpath):
+              continue
+            let f: tuple[dir, name, ext: string] = fpath.splitFile()
+            if f.ext notin finder.criteria.extensions:
+              continue
+            res.putFile(fpath)
+      else:
+        # Searching using UNIX patterns
+        for pattern in finder.criteria.patterns:
+          for fpath in walkFiles(absolutePath(finder.criteria.path) / pattern):
+            let thisFile = FileFinder(path: fpath, info: getFileInfo(fpath))
             if finder.criteria.bySize:
               if not checkFileSize(finder, thisFile):
                 continue
@@ -351,8 +355,10 @@ proc execNativeFinder(finder: Finder) =
 
 proc get*(finder: Finder): Results =
   ## Execute Finder query and return the results
+  if finder.criteria.patterns.len == 0:
+    finder.criteria.patterns = @["*"]
   case finder.driver:
-    of Native: execNativeFinder(finder)
+    of Native: nativeFinder(finder)
     of Unix: discard
     of Remote: discard
   result = finder.results
