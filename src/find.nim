@@ -7,9 +7,11 @@
 # https://github.com/symfony/symfony/blob/6.1/src/Symfony/Component/Finder/Finder.php#method_directories
 # https://symfony.com/doc/current/components/finder.html#files-or-directories
 import std/[os, tables, times, re, strutils, sequtils,
-          math, asyncdispatch, asyncftpclient, net]
+          math, algorithm, asyncdispatch, asyncftpclient, net]
 # import std/posix except Time
 import pkg/libssh2
+
+export algorithm.SortOrder, times
 
 type
   FinderDriverType* {.pure.} = enum
@@ -160,8 +162,8 @@ proc get*(finder: Finder): Results =
   result = finder.results
 
 when isMainModule:
-  let res = finder("./examples/", driver = LOCAL).name("*.txt").size(> 15.bytes, < 20.bytes).get
-  for f in res.files():
+  let res = finder("./examples/", driver = LOCAL).name("*.txt").get
+  for f in files(res.only(1.days).sortBySize()):
     echo f.getPath()
     echo f.getSize()
     # echo f.getInfo()

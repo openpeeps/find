@@ -3,6 +3,9 @@ proc getInfo*(file: FileFinder): FileInfo =
   ## https://nim-lang.org/docs/os.html#FileInfo
   result = file.info
 
+proc getName*(file: FileFinder): string =
+  result = file.path.extractFilename
+
 proc getPath*(file: FileFinder): string =
   ## Returns path on disk for given FileFinder 
   result = file.path
@@ -38,3 +41,7 @@ proc getLastAccessTime*(file: FileFinder): Time =
 proc getLastModificationTime*(file: FileFinder): Time =
   ## Returns the file's last read or write access time
   result = file.info.lastWriteTime
+
+proc getCreationTime*(file: FileFinder): Time =
+  ## Returns the creation time
+  result = file.info.creationTime

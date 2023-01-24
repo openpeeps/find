@@ -118,6 +118,11 @@ proc mb*(i: float): FSize = i.megabytes
 proc gb*(i: float): FSize = i.gigabytes
 proc tb*(i: float): FSize = i.terabytes
 
+proc KB*(i: float): FSize = i.kilobytes
+proc MB*(i: float): FSize = i.megabytes
+proc GB*(i: float): FSize = i.gigabytes
+proc TB*(i: float): FSize = i.terabytes
+
 proc size*[F: Finder](finder: F, fs: FSize): F =
   finder.criteria.size.min = fs
   finder.criteria.bySize = true
@@ -144,21 +149,3 @@ proc checkFileSize(finder: Finder, file: FileFinder): bool =
         of LTE:   fs <= min.bytes
         of GT:    fs > min.bytes
         of GTE:   fs >= min.bytes
-
-proc sort*[F: Finder](finder: F, sortType: SortType): F =
-  ## Sorts files and directories
-
-proc sortByName*[F: Finder](finder: F): F =
-  ## Sorts files and directories by name
-
-proc sortByType*[F: Finder](finder: F): F =
-  ## Sorts files and directories by type
-  ##(directories before files), then by name
-
-proc sortByAccessedTime*[F: Finder](finder: F): F =
-  ## Sorts files and directories by the
-  ## last accessed time This is the time that
-  ## the file was last accessed, read or written to
-
-proc sortByModifiedTime*[F: Finder](finder: F): F =
-  ## Sorts files and directories by the last modified time
