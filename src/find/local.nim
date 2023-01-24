@@ -16,9 +16,14 @@ proc execLocalFinder(finder: Finder) =
             if isHiddenFile(finder, fpath):
               continue
             let f: tuple[dir, name, ext: string] = fpath.splitFile()
-            if f.ext notin finder.criteria.extensions:
+            if f.ext[1..^1] notin finder.criteria.extensions:
               continue
-            res.storeFile(fpath)
+            if finder.criteria.bySize:
+              let f = FileFinder(path: fpath, info: getFileInfo(fpath))
+              if not checkFileSize(finder, f): continue
+              res.storeFile(f)
+            else:
+              res.storeFile(fpath)
       else:
         # Searching using UNIX patterns
         if finder.criteria.patterns.len != 0:
@@ -36,7 +41,7 @@ proc execLocalFinder(finder: Finder) =
               if finder.criteria.bySize:
                 if not checkFileSize(finder, f): continue
               if not re.match(fpath.extractFilename, pattern): continue
-              res.storeFile(fpath)
+              res.storeFile(f)
   of SearchInDirectories:
     discard
   finder.results = res

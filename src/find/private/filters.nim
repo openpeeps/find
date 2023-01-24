@@ -1,6 +1,9 @@
 proc storeFile(res: Results, fpath: string) =
   res.fileResults[fpath] = FileFinder(path: fpath, info: getFileInfo(fpath))
 
+proc storeFile(res: Results, f: FileFinder) =
+  res.fileResults[f.path] = f
+
 proc size*[R: Results](res: R): R =
   ## Filter current results by size
 

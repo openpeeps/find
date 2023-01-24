@@ -71,30 +71,6 @@ proc `>=`*(fs: FSize): FSize =
   fs.op = GTE
   result = fs
 
-proc bytes*(i: int): FSize =
-  result = FSize(size: i.toFloat, unit: Bytes)
-
-proc kilobytes*(i: int): FSize =
-  ## FSize of `i` kilobytes
-  result = FSize(size: i.toFloat, unit: Kilobytes)
-
-proc megabytes*(i: int): FSize =
-  ## FSize of `i` megabytes
-  result = FSize(size: i.toFloat, unit: Megabytes)
-
-proc gigabytes*(i: int): FSize =
-  ## FSize of `i` gigabytes
-  result = FSize(size: i.toFloat, unit: Gigabytes)
-
-proc terabytes*(i: int): FSize =
-  ## FSize of `i` terabytes
-  result = FSize(size: i.toFloat, unit: Terabytes)
-
-proc kb*(i: int): FSize = i.kilobytes
-proc mb*(i: int): FSize = i.megabytes
-proc gb*(i: int): FSize = i.gigabytes
-proc tb*(i: int): FSize = i.terabytes
-
 proc toBytes(fs: FSize): float64 =
   result = case fs.unit:
     of Bytes:
@@ -102,11 +78,45 @@ proc toBytes(fs: FSize): float64 =
     of Kilobytes:
       fs.size * 1000
     of Megabytes:
-      fs.size * 10000
+      fs.size * toFloat(100^3)
     of Gigabytes:
-      fs.size * 100000
+      fs.size * toFloat(1000^3)
     of Terabytes:
-      fs.size * 1000000
+      fs.size * toFloat(1*10^12)
+
+proc bytes*(i: float): FSize =
+  result = FSize(size: i, unit: Bytes)
+  result.bytes = i
+
+proc kilobytes*(i: float): FSize =
+  ## FSize of `i` kilobytes
+  result = FSize(size: i, unit: Kilobytes)
+  result.bytes = result.toBytes
+
+proc megabytes*(i: float): FSize =
+  ## FSize of `i` megabytes
+  result = FSize(size: i, unit: Megabytes)
+  result.bytes = result.toBytes
+
+proc gigabytes*(i: float): FSize =
+  ## FSize of `i` gigabytes
+  result = FSize(size: i, unit: Gigabytes)
+  result.bytes = result.toBytes
+
+proc terabytes*(i: float): FSize =
+  ## FSize of `i` terabytes
+  result = FSize(size: i, unit: Terabytes)
+  result.bytes = result.toBytes
+
+proc kb*(i: int): FSize = toFloat(i).kilobytes
+proc mb*(i: int): FSize = toFloat(i).megabytes
+proc gb*(i: int): FSize = toFloat(i).gigabytes
+proc tb*(i: int): FSize = toFloat(i).terabytes
+
+proc kb*(i: float): FSize = i.kilobytes
+proc mb*(i: float): FSize = i.megabytes
+proc gb*(i: float): FSize = i.gigabytes
+proc tb*(i: float): FSize = i.terabytes
 
 proc size*[F: Finder](finder: F, fs: FSize): F =
   finder.criteria.size.min = fs
@@ -128,12 +138,12 @@ proc checkFileSize(finder: Finder, file: FileFinder): bool =
     # if fs.unit != min.unit: return
     return
       case finder.criteria.size.min.op:
-        of EQ:    fs == min.toBytes
-        of NE:    fs != min.toBytes
-        of LT:    fs < min.toBytes
-        of LTE:   fs <= min.toBytes
-        of GT:    fs > min.toBytes
-        of GTE:   fs >= min.toBytes
+        of EQ:    fs == min.bytes
+        of NE:    fs != min.bytes
+        of LT:    fs < min.bytes
+        of LTE:   fs <= min.bytes
+        of GT:    fs > min.bytes
+        of GTE:   fs >= min.bytes
 
 proc sort*[F: Finder](finder: F, sortType: SortType): F =
   ## Sorts files and directories

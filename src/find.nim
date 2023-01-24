@@ -40,6 +40,7 @@ type
     op: FileSizeOp
     unit: FileSizeUnit
     size: float
+    bytes: float
 
   FileFinder* = ref object
     path: string

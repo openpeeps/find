@@ -46,7 +46,7 @@ test "LOCAL: can find by size (> 2.mb)":
 
 test "LOCAL: can find by size (<= 10.mb)":
   let res = finder(dir).size(<= 10.mb).get
-  check res.len == 6
+  check res.len == 7
 
 test "LOCAL: can find using regex":
   let res = finder(dir).name(re"20[\w-]+\.txt").get
@@ -54,5 +54,17 @@ test "LOCAL: can find using regex":
 
 test "LOCAL: can find using regex + size":
   let res = finder(dir).name(re"20[\w-]+\.txt")
-                       .size(>= 20.bytes).get
+                       .size(== 20.bytes).get
   check res.len == 1
+
+test "LOCAL: can find by ext and size (< 4.82.mb)":
+  let res = finder(dir).ext("jpg").size(< 4.82.mb).get
+  check res.len == 1
+
+test "LOCAL: can find by ext and size (> 1.442.mb)":
+  let res = finder(dir).ext("jpg").size(> 1.442.mb).get
+  check res.len == 1
+
+test "LOCAL: can find by size (>= 0.03376.tb)":
+  let res = finder(dir).size(>= 0.03376.tb).get
+  check res.len == 0
