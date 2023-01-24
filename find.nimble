@@ -10,6 +10,7 @@ srcDir        = "src"
 # Dependencies
 
 requires "nim >= 1.6.10"
+requires "libssh2"
 
 task tests, "Run test":
     exec "testament p 'tests/*.nim'"
