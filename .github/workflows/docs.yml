@@ -3,8 +3,8 @@ on:
   push:
     tags:
       - 'v*.*.*'
-    # branches:
-    #   - main
+    branches:
+      - main
 env:
   nim-version: 'stable'
   nim-src: src/find.nim
