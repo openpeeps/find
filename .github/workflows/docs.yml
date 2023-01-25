@@ -27,4 +27,4 @@ jobs:
           publish_dir: ${{ env.deploy-dir }}
           destination_dir: ./find
           publish_branch: main
-          enable_jekyll: true
+          enable_jekyll: false
