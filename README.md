@@ -41,7 +41,7 @@ for file in res.files:
   echo file.getName 
 ```
 
-For more examples check (/tests)[https://github.com/openpeep/find/tree/main/tests] | (API reference)[https://github.com]
+For more examples check [/tests](https://github.com/openpeep/find/tree/main/tests) | [API reference](https://github.com)
 
 ### ❤ Contributions & Support
 - 🐛 Found a bug? (Create a new Issue)[/issues]
