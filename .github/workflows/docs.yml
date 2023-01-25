@@ -26,5 +26,5 @@ jobs:
           external_repository: openpeep/openpeep.github.io
           publish_dir: ${{ env.deploy-dir }}
           destination_dir: ./find
-          # keep_files: true
+          publish_branch: main
           enable_jekyll: true
