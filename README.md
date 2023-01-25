@@ -8,7 +8,8 @@
 </p>
 
 <p align="center">
-  <a href="https://openpeep.github.io/find/">API reference</a> | <img src="https://github.com/openpeep/find/workflows/test/badge.svg" alt="Github Actions">
+  <a href="https://openpeep.github.io/find/">API reference</a><br><br>
+  <img src="https://github.com/openpeep/find/workflows/test/badge.svg" alt="Github Actions"> <img src="https://github.com/openpeep/find/workflows/docs/badge.svg" alt="Github Actions">
 </p>
 
 ## 😍 Key Features
