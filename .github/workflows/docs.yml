@@ -3,8 +3,8 @@ on:
   push:
     tags:
       - 'v*.*.*'
-    branches:
-      - main
+    # branches:
+    #   - main
 env:
   nim-version: 'stable'
   nim-src: src/find.nim
@@ -26,3 +26,5 @@ jobs:
           external_repository: openpeep/openpeep.github.io
           publish_dir: ${{ env.deploy-dir }}/find
           publish_branch: main
+          keep_files: true
+          enable_jekyll: true
