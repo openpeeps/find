@@ -44,8 +44,8 @@ for file in res.files:
 For more examples check [/tests](https://github.com/openpeep/find/tree/main/tests) | [API reference](https://github.com)
 
 ### ❤ Contributions & Support
-- 🐛 Found a bug? (Create a new Issue)[/issues]
-- 👋 Wanna help? (Fork it!)[/fork] 
+- 🐛 Found a bug? [Create a new Issue](https://github.com/openpeep/find/issues)
+- 👋 Wanna help? [Fork it!](https://github.com/openpeep/find/fork)
 - 😎 [Get €20 in cloud credits from Hetzner](https://hetzner.cloud/?ref=Hm0mYGM9NxZ4)
 - 🥰 [Donate via PayPal address](https://www.paypal.com/donate/?hosted_button_id=RJK3ZTDWPL55C)
 
