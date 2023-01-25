@@ -490,7 +490,7 @@ window.addEventListener('DOMContentLoaded', main);
 <h1><a class="toc-backref" href="#7">Types</a></h1>
 <dl class="item">
 <div id="Criterias">
-<dt><pre><a href="find.html#Criterias"><span class="Identifier">Criterias</span></a> <span class="Other">=</span> <span class="Keyword">tuple</span><span class="Other">[</span><span class="Identifier">path</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">,</span> <span class="Identifier">patterns</span><span class="Other">,</span> <span class="Identifier">extensions</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><span class="Identifier">string</span><span class="Other">]</span><span class="Other">,</span>
+<dt><pre><a href="index.html#Criterias"><span class="Identifier">Criterias</span></a> <span class="Other">=</span> <span class="Keyword">tuple</span><span class="Other">[</span><span class="Identifier">path</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">,</span> <span class="Identifier">patterns</span><span class="Other">,</span> <span class="Identifier">extensions</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><span class="Identifier">string</span><span class="Other">]</span><span class="Other">,</span>
                   <span class="Identifier">regexPatterns</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><span class="Identifier">Regex</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">size</span><span class="Other">:</span> <span class="Keyword">tuple</span><span class="Other">[</span><span class="Identifier">min</span><span class="Other">,</span> <span class="Identifier">max</span><span class="Other">:</span> <span class="Identifier">FSize</span><span class="Other">]</span><span class="Other">,</span>
                   <span class="Identifier">bySize</span><span class="Other">:</span> <span class="Identifier">bool</span><span class="Other">]</span></pre></dt>
 <dd>
@@ -500,7 +500,7 @@ window.addEventListener('DOMContentLoaded', main);
 </dd>
 </div>
 <div id="FileFinder">
-<dt><pre><a href="find.html#FileFinder"><span class="Identifier">FileFinder</span></a> <span class="Other">=</span> <span class="Keyword">ref</span> <span class="Keyword">object</span>
+<dt><pre><a href="index.html#FileFinder"><span class="Identifier">FileFinder</span></a> <span class="Other">=</span> <span class="Keyword">ref</span> <span class="Keyword">object</span>
   <span class="Identifier">path</span><span class="Other">:</span> <span class="Identifier">string</span>
   <span class="Identifier">info</span><span class="Other">:</span> <span class="Identifier">FileInfo</span>
 </pre></dt>
@@ -511,7 +511,7 @@ window.addEventListener('DOMContentLoaded', main);
 </dd>
 </div>
 <div id="FileSizeOp">
-<dt><pre><a href="find.html#FileSizeOp"><span class="Identifier">FileSizeOp</span></a> {.<span class="Identifier">pure</span>.} <span class="Other">=</span> <span class="Keyword">enum</span>
+<dt><pre><a href="index.html#FileSizeOp"><span class="Identifier">FileSizeOp</span></a> {.<span class="Identifier">pure</span>.} <span class="Other">=</span> <span class="Keyword">enum</span>
   <span class="Identifier">EQ</span> <span class="Other">=</span> <span class="StringLit">&quot;==&quot;</span><span class="Other">,</span> <span class="Identifier">NE</span> <span class="Other">=</span> <span class="StringLit">&quot;!=&quot;</span><span class="Other">,</span> <span class="Identifier">LT</span> <span class="Other">=</span> <span class="StringLit">&quot;&lt;&quot;</span><span class="Other">,</span> <span class="Identifier">GT</span> <span class="Other">=</span> <span class="StringLit">&quot;&gt;&quot;</span><span class="Other">,</span> <span class="Identifier">LTE</span> <span class="Other">=</span> <span class="StringLit">&quot;&lt;=&quot;</span><span class="Other">,</span> <span class="Identifier">GTE</span> <span class="Other">=</span> <span class="StringLit">&quot;&gt;=&quot;</span></pre></dt>
 <dd>
 
@@ -520,7 +520,7 @@ window.addEventListener('DOMContentLoaded', main);
 </dd>
 </div>
 <div id="FileSizeUnit">
-<dt><pre><a href="find.html#FileSizeUnit"><span class="Identifier">FileSizeUnit</span></a> {.<span class="Identifier">pure</span>.} <span class="Other">=</span> <span class="Keyword">enum</span>
+<dt><pre><a href="index.html#FileSizeUnit"><span class="Identifier">FileSizeUnit</span></a> {.<span class="Identifier">pure</span>.} <span class="Other">=</span> <span class="Keyword">enum</span>
   <span class="Identifier">Bytes</span> <span class="Other">=</span> <span class="StringLit">&quot;Bytes&quot;</span><span class="Other">,</span> <span class="Identifier">Kilobytes</span> <span class="Other">=</span> <span class="StringLit">&quot;KB&quot;</span><span class="Other">,</span> <span class="Identifier">Megabytes</span> <span class="Other">=</span> <span class="StringLit">&quot;MB&quot;</span><span class="Other">,</span> <span class="Identifier">Gigabytes</span> <span class="Other">=</span> <span class="StringLit">&quot;GB&quot;</span><span class="Other">,</span>
   <span class="Identifier">Terabytes</span> <span class="Other">=</span> <span class="StringLit">&quot;TB&quot;</span></pre></dt>
 <dd>
@@ -530,7 +530,7 @@ window.addEventListener('DOMContentLoaded', main);
 </dd>
 </div>
 <div id="Filters">
-<dt><pre><a href="find.html#Filters"><span class="Identifier">Filters</span></a> <span class="Other">=</span> <span class="Keyword">tuple</span><span class="Other">[</span><span class="Identifier">isRecursive</span><span class="Other">:</span> <span class="Identifier">bool</span><span class="Other">,</span> <span class="Identifier">ignoreHiddenFiles</span><span class="Other">:</span> <span class="Identifier">bool</span><span class="Other">,</span>
+<dt><pre><a href="index.html#Filters"><span class="Identifier">Filters</span></a> <span class="Other">=</span> <span class="Keyword">tuple</span><span class="Other">[</span><span class="Identifier">isRecursive</span><span class="Other">:</span> <span class="Identifier">bool</span><span class="Other">,</span> <span class="Identifier">ignoreHiddenFiles</span><span class="Other">:</span> <span class="Identifier">bool</span><span class="Other">,</span>
                 <span class="Identifier">ignoreUnreadableDirectories</span><span class="Other">:</span> <span class="Identifier">bool</span><span class="Other">,</span> <span class="Identifier">ignoreVCSFiles</span><span class="Other">:</span> <span class="Identifier">bool</span><span class="Other">]</span></pre></dt>
 <dd>
 
@@ -539,21 +539,21 @@ window.addEventListener('DOMContentLoaded', main);
 </dd>
 </div>
 <div id="Finder">
-<dt><pre><a href="find.html#Finder"><span class="Identifier">Finder</span></a> <span class="Other">=</span> <span class="Keyword">ref</span> <span class="Keyword">object</span>
-  <span class="Keyword">case</span> <span class="Identifier">driver</span><span class="Other">:</span> <a href="find.html#FinderDriverType"><span class="Identifier">FinderDriverType</span></a>
+<dt><pre><a href="index.html#Finder"><span class="Identifier">Finder</span></a> <span class="Other">=</span> <span class="Keyword">ref</span> <span class="Keyword">object</span>
+  <span class="Keyword">case</span> <span class="Identifier">driver</span><span class="Other">:</span> <a href="index.html#FinderDriverType"><span class="Identifier">FinderDriverType</span></a>
   <span class="Keyword">of</span> <span class="Identifier">LOCAL</span><span class="Other">:</span>
-      <span class="Identifier">local</span><span class="Other">:</span> <a href="find.html#LocalFinder"><span class="Identifier">LocalFinder</span></a>
+      <span class="Identifier">local</span><span class="Other">:</span> <a href="index.html#LocalFinder"><span class="Identifier">LocalFinder</span></a>
 
   <span class="Keyword">of</span> <span class="Identifier">SSH</span><span class="Other">:</span>
-      <span class="Identifier">ssh</span><span class="Other">:</span> <a href="find.html#SSHFinder"><span class="Identifier">SSHFinder</span></a>
+      <span class="Identifier">ssh</span><span class="Other">:</span> <a href="index.html#SSHFinder"><span class="Identifier">SSHFinder</span></a>
 
   <span class="Keyword">of</span> <span class="Identifier">FTP</span><span class="Other">:</span>
       <span class="Identifier">ftp</span><span class="Other">:</span> <span class="Identifier">AsyncFtpClient</span>
 
-  <span class="Identifier">searchType</span><span class="Other">:</span> <a href="find.html#SearchType"><span class="Identifier">SearchType</span></a>
-  <span class="Identifier">criteria</span><span class="Other">:</span> <a href="find.html#Criterias"><span class="Identifier">Criterias</span></a>
-  <span class="Identifier">filters</span><span class="Other">:</span> <a href="find.html#Filters"><span class="Identifier">Filters</span></a>
-  <span class="Identifier">results</span><span class="Other">:</span> <a href="find.html#Results"><span class="Identifier">Results</span></a>           <span class="Comment">## An instance of `Results`</span>
+  <span class="Identifier">searchType</span><span class="Other">:</span> <a href="index.html#SearchType"><span class="Identifier">SearchType</span></a>
+  <span class="Identifier">criteria</span><span class="Other">:</span> <a href="index.html#Criterias"><span class="Identifier">Criterias</span></a>
+  <span class="Identifier">filters</span><span class="Other">:</span> <a href="index.html#Filters"><span class="Identifier">Filters</span></a>
+  <span class="Identifier">results</span><span class="Other">:</span> <a href="index.html#Results"><span class="Identifier">Results</span></a>           <span class="Comment">## An instance of `Results`</span>
   </pre></dt>
 <dd>
 
@@ -562,7 +562,7 @@ window.addEventListener('DOMContentLoaded', main);
 </dd>
 </div>
 <div id="FinderDriverType">
-<dt><pre><a href="find.html#FinderDriverType"><span class="Identifier">FinderDriverType</span></a> {.<span class="Identifier">pure</span>.} <span class="Other">=</span> <span class="Keyword">enum</span>
+<dt><pre><a href="index.html#FinderDriverType"><span class="Identifier">FinderDriverType</span></a> {.<span class="Identifier">pure</span>.} <span class="Other">=</span> <span class="Keyword">enum</span>
   <span class="Identifier">LOCAL</span><span class="Other">,</span> <span class="Identifier">SSH</span><span class="Other">,</span> <span class="Identifier">FTP</span></pre></dt>
 <dd>
 
@@ -571,7 +571,7 @@ window.addEventListener('DOMContentLoaded', main);
 </dd>
 </div>
 <div id="LocalFinder">
-<dt><pre><a href="find.html#LocalFinder"><span class="Identifier">LocalFinder</span></a> <span class="Other">=</span> <span class="Keyword">ref</span> <span class="Keyword">object</span> <span class="Keyword">of</span> <span class="Identifier">AbstractDriver</span></pre></dt>
+<dt><pre><a href="index.html#LocalFinder"><span class="Identifier">LocalFinder</span></a> <span class="Other">=</span> <span class="Keyword">ref</span> <span class="Keyword">object</span> <span class="Keyword">of</span> <span class="Identifier">AbstractDriver</span></pre></dt>
 <dd>
 
 
@@ -579,11 +579,11 @@ window.addEventListener('DOMContentLoaded', main);
 </dd>
 </div>
 <div id="Results">
-<dt><pre><a href="find.html#Results"><span class="Identifier">Results</span></a> <span class="Other">=</span> <span class="Keyword">ref</span> <span class="Keyword">object</span>
-  <span class="Identifier">sortType</span><span class="Other">:</span> <a href="find.html#SortType"><span class="Identifier">SortType</span></a>
-  <span class="Keyword">case</span> <span class="Identifier">searchType</span><span class="Other">:</span> <a href="find.html#SearchType"><span class="Identifier">SearchType</span></a>
+<dt><pre><a href="index.html#Results"><span class="Identifier">Results</span></a> <span class="Other">=</span> <span class="Keyword">ref</span> <span class="Keyword">object</span>
+  <span class="Identifier">sortType</span><span class="Other">:</span> <a href="index.html#SortType"><span class="Identifier">SortType</span></a>
+  <span class="Keyword">case</span> <span class="Identifier">searchType</span><span class="Other">:</span> <a href="index.html#SearchType"><span class="Identifier">SearchType</span></a>
   <span class="Keyword">of</span> <span class="Identifier">SearchInFiles</span><span class="Other">:</span>
-      <span class="Identifier">fileResults</span><span class="Other">:</span> <span class="Identifier">OrderedTableRef</span><span class="Other">[</span><span class="Identifier">string</span><span class="Other">,</span> <a href="find.html#FileFinder"><span class="Identifier">FileFinder</span></a><span class="Other">]</span>
+      <span class="Identifier">fileResults</span><span class="Other">:</span> <span class="Identifier">OrderedTableRef</span><span class="Other">[</span><span class="Identifier">string</span><span class="Other">,</span> <a href="index.html#FileFinder"><span class="Identifier">FileFinder</span></a><span class="Other">]</span>
 
   <span class="Keyword">of</span> <span class="Identifier">SearchInDirectories</span><span class="Other">:</span>
       <span class="Identifier">dirResults</span><span class="Other">:</span> <span class="Identifier">OrderedTableRef</span><span class="Other">[</span><span class="Identifier">string</span><span class="Other">,</span> <span class="Identifier">Directory</span><span class="Other">]</span>
@@ -596,7 +596,7 @@ window.addEventListener('DOMContentLoaded', main);
 </dd>
 </div>
 <div id="SearchType">
-<dt><pre><a href="find.html#SearchType"><span class="Identifier">SearchType</span></a> <span class="Other">=</span> <span class="Keyword">enum</span>
+<dt><pre><a href="index.html#SearchType"><span class="Identifier">SearchType</span></a> <span class="Other">=</span> <span class="Keyword">enum</span>
   <span class="Identifier">SearchInFiles</span><span class="Other">,</span> <span class="Identifier">SearchInDirectories</span></pre></dt>
 <dd>
 
@@ -605,7 +605,7 @@ window.addEventListener('DOMContentLoaded', main);
 </dd>
 </div>
 <div id="SortType">
-<dt><pre><a href="find.html#SortType"><span class="Identifier">SortType</span></a> <span class="Other">=</span> <span class="Keyword">enum</span>
+<dt><pre><a href="index.html#SortType"><span class="Identifier">SortType</span></a> <span class="Other">=</span> <span class="Keyword">enum</span>
   <span class="Identifier">SortByModifiedTime</span><span class="Other">,</span> <span class="Identifier">SortByChangedTime</span><span class="Other">,</span> <span class="Identifier">SortByAccessedTime</span><span class="Other">,</span> <span class="Identifier">SortByType</span><span class="Other">,</span>
   <span class="Identifier">SortByName</span></pre></dt>
 <dd>
@@ -615,7 +615,7 @@ window.addEventListener('DOMContentLoaded', main);
 </dd>
 </div>
 <div id="SSHFinder">
-<dt><pre><a href="find.html#SSHFinder"><span class="Identifier">SSHFinder</span></a> <span class="Other">=</span> <span class="Keyword">ref</span> <span class="Keyword">object</span> <span class="Keyword">of</span> <span class="Identifier">AbstractDriver</span>
+<dt><pre><a href="index.html#SSHFinder"><span class="Identifier">SSHFinder</span></a> <span class="Other">=</span> <span class="Keyword">ref</span> <span class="Keyword">object</span> <span class="Keyword">of</span> <span class="Identifier">AbstractDriver</span>
   <span class="Identifier">sock</span><span class="Other">:</span> <span class="Identifier">AsyncFD</span>
   <span class="Identifier">session</span><span class="Other">:</span> <span class="Identifier">Session</span>
   <span class="Identifier">host</span><span class="Other">:</span> <span class="Identifier">string</span>
@@ -636,7 +636,7 @@ window.addEventListener('DOMContentLoaded', main);
 </dd>
 </div>
 <div id="Submodule">
-<dt><pre><a href="find.html#Submodule"><span class="Identifier">Submodule</span></a> <span class="Other">=</span> <span class="Keyword">object</span>
+<dt><pre><a href="index.html#Submodule"><span class="Identifier">Submodule</span></a> <span class="Other">=</span> <span class="Keyword">object</span>
   <span class="Identifier">name</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">string</span>
 </pre></dt>
 <dd>
@@ -707,7 +707,7 @@ window.addEventListener('DOMContentLoaded', main);
 </dd>
 </div>
 <div id="count,Results">
-<dt><pre><span class="Keyword">proc</span> <a href="#count%2CResults"><span class="Identifier">count</span></a><span class="Other">(</span><span class="Identifier">res</span><span class="Other">:</span> <a href="find.html#Results"><span class="Identifier">Results</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">int</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#count%2CResults"><span class="Identifier">count</span></a><span class="Other">(</span><span class="Identifier">res</span><span class="Other">:</span> <a href="index.html#Results"><span class="Identifier">Results</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">int</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
 
 An alias for <tt class="docutils literal"><span class="pre"><span class="Identifier">len</span></span></tt>
@@ -715,7 +715,7 @@ An alias for <tt class="docutils literal"><span class="pre"><span class="Identif
 </dd>
 </div>
 <div id="exclude,F,string">
-<dt><pre><span class="Keyword">proc</span> <a href="#exclude%2CF%2Cstring"><span class="Identifier">exclude</span></a><span class="Other">[</span><span class="Identifier">F</span><span class="Other">:</span> <a href="find.html#Finder"><span class="Identifier">Finder</span></a><span class="Other">]</span><span class="Other">(</span><span class="Identifier">finder</span><span class="Other">:</span> <span class="Identifier">F</span><span class="Other">;</span> <span class="Identifier">pattern</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">F</span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#exclude%2CF%2Cstring"><span class="Identifier">exclude</span></a><span class="Other">[</span><span class="Identifier">F</span><span class="Other">:</span> <a href="index.html#Finder"><span class="Identifier">Finder</span></a><span class="Other">]</span><span class="Other">(</span><span class="Identifier">finder</span><span class="Other">:</span> <span class="Identifier">F</span><span class="Other">;</span> <span class="Identifier">pattern</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">F</span></pre></dt>
 <dd>
 
 Excludes files or directories by name or pattern
@@ -723,7 +723,7 @@ Excludes files or directories by name or pattern
 </dd>
 </div>
 <div id="exists,F">
-<dt><pre><span class="Keyword">proc</span> <a href="#exists%2CF"><span class="Identifier">exists</span></a><span class="Other">[</span><span class="Identifier">F</span><span class="Other">:</span> <a href="find.html#Finder"><span class="Identifier">Finder</span></a><span class="Other">]</span><span class="Other">(</span><span class="Identifier">finder</span><span class="Other">:</span> <span class="Identifier">F</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#exists%2CF"><span class="Identifier">exists</span></a><span class="Other">[</span><span class="Identifier">F</span><span class="Other">:</span> <a href="index.html#Finder"><span class="Identifier">Finder</span></a><span class="Other">]</span><span class="Other">(</span><span class="Identifier">finder</span><span class="Other">:</span> <span class="Identifier">F</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">bool</span></pre></dt>
 <dd>
 
 Check if any results were found
@@ -731,7 +731,7 @@ Check if any results were found
 </dd>
 </div>
 <div id="ext,Finder,varargs[string]">
-<dt><pre><span class="Keyword">proc</span> <a href="#ext%2CFinder%2Cvarargs%5Bstring%5D"><span class="Identifier">ext</span></a><span class="Other">(</span><span class="Identifier">finder</span><span class="Other">:</span> <a href="find.html#Finder"><span class="Identifier">Finder</span></a><span class="Other">;</span> <span class="Identifier">fileExtension</span><span class="Other">:</span> <span class="Identifier">varargs</span><span class="Other">[</span><span class="Identifier">string</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <a href="find.html#Finder"><span class="Identifier">Finder</span></a> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
+<dt><pre><span class="Keyword">proc</span> <a href="#ext%2CFinder%2Cvarargs%5Bstring%5D"><span class="Identifier">ext</span></a><span class="Other">(</span><span class="Identifier">finder</span><span class="Other">:</span> <a href="index.html#Finder"><span class="Identifier">Finder</span></a><span class="Other">;</span> <span class="Identifier">fileExtension</span><span class="Other">:</span> <span class="Identifier">varargs</span><span class="Other">[</span><span class="Identifier">string</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <a href="index.html#Finder"><span class="Identifier">Finder</span></a> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
     <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
 
@@ -740,7 +740,7 @@ Check if any results were found
 </dd>
 </div>
 <div id="ext,Finder,openArray[string]">
-<dt><pre><span class="Keyword">proc</span> <a href="#ext%2CFinder%2CopenArray%5Bstring%5D"><span class="Identifier">ext</span></a><span class="Other">(</span><span class="Identifier">finder</span><span class="Other">:</span> <a href="find.html#Finder"><span class="Identifier">Finder</span></a><span class="Other">;</span> <span class="Identifier">fileExtensions</span><span class="Other">:</span> <span class="Identifier">openArray</span><span class="Other">[</span><span class="Identifier">string</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <a href="find.html#Finder"><span class="Identifier">Finder</span></a> {.
+<dt><pre><span class="Keyword">proc</span> <a href="#ext%2CFinder%2CopenArray%5Bstring%5D"><span class="Identifier">ext</span></a><span class="Other">(</span><span class="Identifier">finder</span><span class="Other">:</span> <a href="index.html#Finder"><span class="Identifier">Finder</span></a><span class="Other">;</span> <span class="Identifier">fileExtensions</span><span class="Other">:</span> <span class="Identifier">openArray</span><span class="Other">[</span><span class="Identifier">string</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <a href="index.html#Finder"><span class="Identifier">Finder</span></a> {.
     <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
 
@@ -750,7 +750,7 @@ Check if any results were found
 </div>
 <div id="finder,string">
 <dt><pre><span class="Keyword">proc</span> <a href="#finder%2Cstring"><span class="Identifier">finder</span></a><span class="Other">(</span><span class="Identifier">path</span> <span class="Other">=</span> <span class="StringLit">&quot;.&quot;</span><span class="Other">;</span> <span class="Identifier">driver</span> <span class="Other">=</span> <span class="Identifier">LOCAL</span><span class="Other">;</span> <span class="Identifier">searchType</span> <span class="Other">=</span> <span class="Identifier">SearchInFiles</span><span class="Other">;</span>
-            <span class="Identifier">isRecursive</span> <span class="Other">=</span> <span class="Identifier">false</span><span class="Other">)</span><span class="Other">:</span> <a href="find.html#Finder"><span class="Identifier">Finder</span></a> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+            <span class="Identifier">isRecursive</span> <span class="Other">=</span> <span class="Identifier">false</span><span class="Other">)</span><span class="Other">:</span> <a href="index.html#Finder"><span class="Identifier">Finder</span></a> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
 
 
@@ -782,7 +782,7 @@ Check if any results were found
 </dd>
 </div>
 <div id="get,Finder">
-<dt><pre><span class="Keyword">proc</span> <a href="#get%2CFinder"><span class="Identifier">get</span></a><span class="Other">(</span><span class="Identifier">finder</span><span class="Other">:</span> <a href="find.html#Finder"><span class="Identifier">Finder</span></a><span class="Other">)</span><span class="Other">:</span> <a href="find.html#Results"><span class="Identifier">Results</span></a> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">OSError</span><span class="Other">,</span> <span class="Identifier">ValueError</span><span class="Other">]</span><span class="Other">,</span>
+<dt><pre><span class="Keyword">proc</span> <a href="#get%2CFinder"><span class="Identifier">get</span></a><span class="Other">(</span><span class="Identifier">finder</span><span class="Other">:</span> <a href="index.html#Finder"><span class="Identifier">Finder</span></a><span class="Other">)</span><span class="Other">:</span> <a href="index.html#Results"><span class="Identifier">Results</span></a> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">OSError</span><span class="Other">,</span> <span class="Identifier">ValueError</span><span class="Other">]</span><span class="Other">,</span>
                                     <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">ReadDirEffect</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
 
@@ -791,7 +791,7 @@ Execute Finder query and return the results
 </dd>
 </div>
 <div id="getCreationTime,FileFinder">
-<dt><pre><span class="Keyword">proc</span> <a href="#getCreationTime%2CFileFinder"><span class="Identifier">getCreationTime</span></a><span class="Other">(</span><span class="Identifier">file</span><span class="Other">:</span> <a href="find.html#FileFinder"><span class="Identifier">FileFinder</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Time</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#getCreationTime%2CFileFinder"><span class="Identifier">getCreationTime</span></a><span class="Other">(</span><span class="Identifier">file</span><span class="Other">:</span> <a href="index.html#FileFinder"><span class="Identifier">FileFinder</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Time</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
 
 Returns the creation time
@@ -799,7 +799,7 @@ Returns the creation time
 </dd>
 </div>
 <div id="getFileSize,FileFinder">
-<dt><pre><span class="Keyword">proc</span> <a href="#getFileSize%2CFileFinder"><span class="Identifier">getFileSize</span></a><span class="Other">(</span><span class="Identifier">file</span><span class="Other">:</span> <a href="find.html#FileFinder"><span class="Identifier">FileFinder</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">BiggestInt</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#getFileSize%2CFileFinder"><span class="Identifier">getFileSize</span></a><span class="Other">(</span><span class="Identifier">file</span><span class="Other">:</span> <a href="index.html#FileFinder"><span class="Identifier">FileFinder</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">BiggestInt</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
 
 Returns the file size of file (in bytes)
@@ -807,7 +807,7 @@ Returns the file size of file (in bytes)
 </dd>
 </div>
 <div id="getInfo,FileFinder">
-<dt><pre><span class="Keyword">proc</span> <a href="#getInfo%2CFileFinder"><span class="Identifier">getInfo</span></a><span class="Other">(</span><span class="Identifier">file</span><span class="Other">:</span> <a href="find.html#FileFinder"><span class="Identifier">FileFinder</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">FileInfo</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#getInfo%2CFileFinder"><span class="Identifier">getInfo</span></a><span class="Other">(</span><span class="Identifier">file</span><span class="Other">:</span> <a href="index.html#FileFinder"><span class="Identifier">FileFinder</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">FileInfo</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
 
 Returns an instance of <tt class="docutils literal"><span class="pre"><span class="Identifier">FileInfo</span></span></tt> <a class="reference external" href="https://nim-lang.org/docs/os.html#FileInfo">https://nim-lang.org/docs/os.html#FileInfo</a>
@@ -815,7 +815,7 @@ Returns an instance of <tt class="docutils literal"><span class="pre"><span clas
 </dd>
 </div>
 <div id="getLastAccessTime,FileFinder">
-<dt><pre><span class="Keyword">proc</span> <a href="#getLastAccessTime%2CFileFinder"><span class="Identifier">getLastAccessTime</span></a><span class="Other">(</span><span class="Identifier">file</span><span class="Other">:</span> <a href="find.html#FileFinder"><span class="Identifier">FileFinder</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Time</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#getLastAccessTime%2CFileFinder"><span class="Identifier">getLastAccessTime</span></a><span class="Other">(</span><span class="Identifier">file</span><span class="Other">:</span> <a href="index.html#FileFinder"><span class="Identifier">FileFinder</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Time</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
 
 Returns the file's last read or write access time
@@ -823,7 +823,7 @@ Returns the file's last read or write access time
 </dd>
 </div>
 <div id="getLastModificationTime,FileFinder">
-<dt><pre><span class="Keyword">proc</span> <a href="#getLastModificationTime%2CFileFinder"><span class="Identifier">getLastModificationTime</span></a><span class="Other">(</span><span class="Identifier">file</span><span class="Other">:</span> <a href="find.html#FileFinder"><span class="Identifier">FileFinder</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Time</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#getLastModificationTime%2CFileFinder"><span class="Identifier">getLastModificationTime</span></a><span class="Other">(</span><span class="Identifier">file</span><span class="Other">:</span> <a href="index.html#FileFinder"><span class="Identifier">FileFinder</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Time</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
 
 Returns the file's last read or write access time
@@ -831,7 +831,7 @@ Returns the file's last read or write access time
 </dd>
 </div>
 <div id="getName,FileFinder">
-<dt><pre><span class="Keyword">proc</span> <a href="#getName%2CFileFinder"><span class="Identifier">getName</span></a><span class="Other">(</span><span class="Identifier">file</span><span class="Other">:</span> <a href="find.html#FileFinder"><span class="Identifier">FileFinder</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">string</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#getName%2CFileFinder"><span class="Identifier">getName</span></a><span class="Other">(</span><span class="Identifier">file</span><span class="Other">:</span> <a href="index.html#FileFinder"><span class="Identifier">FileFinder</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">string</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
 
 
@@ -839,7 +839,7 @@ Returns the file's last read or write access time
 </dd>
 </div>
 <div id="getPath,FileFinder">
-<dt><pre><span class="Keyword">proc</span> <a href="#getPath%2CFileFinder"><span class="Identifier">getPath</span></a><span class="Other">(</span><span class="Identifier">file</span><span class="Other">:</span> <a href="find.html#FileFinder"><span class="Identifier">FileFinder</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">string</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#getPath%2CFileFinder"><span class="Identifier">getPath</span></a><span class="Other">(</span><span class="Identifier">file</span><span class="Other">:</span> <a href="index.html#FileFinder"><span class="Identifier">FileFinder</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">string</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
 
 Returns path on disk for given FileFinder 
@@ -847,7 +847,7 @@ Returns path on disk for given FileFinder
 </dd>
 </div>
 <div id="getSize,FileFinder">
-<dt><pre><span class="Keyword">proc</span> <a href="#getSize%2CFileFinder"><span class="Identifier">getSize</span></a><span class="Other">(</span><span class="Identifier">file</span><span class="Other">:</span> <a href="find.html#FileFinder"><span class="Identifier">FileFinder</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">string</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#getSize%2CFileFinder"><span class="Identifier">getSize</span></a><span class="Other">(</span><span class="Identifier">file</span><span class="Other">:</span> <a href="index.html#FileFinder"><span class="Identifier">FileFinder</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">string</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
 
 Returns the current file size of given FileFinder auto-converted to Bytes, KB, MB, GB, or TB.
@@ -855,7 +855,7 @@ Returns the current file size of given FileFinder auto-converted to Bytes, KB, M
 </dd>
 </div>
 <div id="getSize,FileFinder,bool">
-<dt><pre><span class="Keyword">proc</span> <a href="#getSize%2CFileFinder%2Cbool"><span class="Identifier">getSize</span></a><span class="Other">(</span><span class="Identifier">file</span><span class="Other">:</span> <a href="find.html#FileFinder"><span class="Identifier">FileFinder</span></a><span class="Other">;</span> <span class="Identifier">hideSizeLabel</span><span class="Other">:</span> <span class="Identifier">bool</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">float</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
+<dt><pre><span class="Keyword">proc</span> <a href="#getSize%2CFileFinder%2Cbool"><span class="Identifier">getSize</span></a><span class="Other">(</span><span class="Identifier">file</span><span class="Other">:</span> <a href="index.html#FileFinder"><span class="Identifier">FileFinder</span></a><span class="Other">;</span> <span class="Identifier">hideSizeLabel</span><span class="Other">:</span> <span class="Identifier">bool</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">float</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span>
     <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
 
@@ -872,7 +872,7 @@ FSize of <tt class="docutils literal"><span class="pre"><span class="Identifier"
 </dd>
 </div>
 <div id="ignoreUnreadableDirs,F">
-<dt><pre><span class="Keyword">proc</span> <a href="#ignoreUnreadableDirs%2CF"><span class="Identifier">ignoreUnreadableDirs</span></a><span class="Other">[</span><span class="Identifier">F</span><span class="Other">:</span> <a href="find.html#Finder"><span class="Identifier">Finder</span></a><span class="Other">]</span><span class="Other">(</span><span class="Identifier">finder</span><span class="Other">:</span> <span class="Identifier">F</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">F</span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#ignoreUnreadableDirs%2CF"><span class="Identifier">ignoreUnreadableDirs</span></a><span class="Other">[</span><span class="Identifier">F</span><span class="Other">:</span> <a href="index.html#Finder"><span class="Identifier">Finder</span></a><span class="Other">]</span><span class="Other">(</span><span class="Identifier">finder</span><span class="Other">:</span> <span class="Identifier">F</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">F</span></pre></dt>
 <dd>
 
 Tells Finder to ignore unreadable directories.
@@ -880,7 +880,7 @@ Tells Finder to ignore unreadable directories.
 </dd>
 </div>
 <div id="ignoreVCS,F,bool">
-<dt><pre><span class="Keyword">proc</span> <a href="#ignoreVCS%2CF%2Cbool"><span class="Identifier">ignoreVCS</span></a><span class="Other">[</span><span class="Identifier">F</span><span class="Other">:</span> <a href="find.html#Finder"><span class="Identifier">Finder</span></a><span class="Other">]</span><span class="Other">(</span><span class="Identifier">finder</span><span class="Other">:</span> <span class="Identifier">F</span><span class="Other">;</span> <span class="Identifier">toIgnore</span><span class="Other">:</span> <span class="Identifier">bool</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">F</span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#ignoreVCS%2CF%2Cbool"><span class="Identifier">ignoreVCS</span></a><span class="Other">[</span><span class="Identifier">F</span><span class="Other">:</span> <a href="index.html#Finder"><span class="Identifier">Finder</span></a><span class="Other">]</span><span class="Other">(</span><span class="Identifier">finder</span><span class="Other">:</span> <span class="Identifier">F</span><span class="Other">;</span> <span class="Identifier">toIgnore</span><span class="Other">:</span> <span class="Identifier">bool</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">F</span></pre></dt>
 <dd>
 
 Tell finder to ignore Version Control Systems, such as Git and Mercurial. Those files are ignored by default when looking for files and directories, but you can change this behaviour by using this proc.
@@ -888,7 +888,7 @@ Tell finder to ignore Version Control Systems, such as Git and Mercurial. Those 
 </dd>
 </div>
 <div id="initSubmodule">
-<dt><pre><span class="Keyword">proc</span> <a href="#initSubmodule"><span class="Identifier">initSubmodule</span></a><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <a href="find.html#Submodule"><span class="Identifier">Submodule</span></a> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#initSubmodule"><span class="Identifier">initSubmodule</span></a><span class="Other">(</span><span class="Other">)</span><span class="Other">:</span> <a href="index.html#Submodule"><span class="Identifier">Submodule</span></a> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
 
 Initialises a new <tt class="docutils literal"><span class="pre">Submodule</span></tt> object.
@@ -928,7 +928,7 @@ FSize of <tt class="docutils literal"><span class="pre"><span class="Identifier"
 </dd>
 </div>
 <div id="lastTimeModified,F,string">
-<dt><pre><span class="Keyword">proc</span> <a href="#lastTimeModified%2CF%2Cstring"><span class="Identifier">lastTimeModified</span></a><span class="Other">[</span><span class="Identifier">F</span><span class="Other">:</span> <a href="find.html#Finder"><span class="Identifier">Finder</span></a><span class="Other">]</span><span class="Other">(</span><span class="Identifier">finder</span><span class="Other">:</span> <span class="Identifier">F</span><span class="Other">;</span> <span class="Identifier">since</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">F</span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#lastTimeModified%2CF%2Cstring"><span class="Identifier">lastTimeModified</span></a><span class="Other">[</span><span class="Identifier">F</span><span class="Other">:</span> <a href="index.html#Finder"><span class="Identifier">Finder</span></a><span class="Other">]</span><span class="Other">(</span><span class="Identifier">finder</span><span class="Other">:</span> <span class="Identifier">F</span><span class="Other">;</span> <span class="Identifier">since</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">F</span></pre></dt>
 <dd>
 
 Search for files or directories by last modified dates.
@@ -936,7 +936,7 @@ Search for files or directories by last modified dates.
 </dd>
 </div>
 <div id="lastTimeModified,F,string,string">
-<dt><pre><span class="Keyword">proc</span> <a href="#lastTimeModified%2CF%2Cstring%2Cstring"><span class="Identifier">lastTimeModified</span></a><span class="Other">[</span><span class="Identifier">F</span><span class="Other">:</span> <a href="find.html#Finder"><span class="Identifier">Finder</span></a><span class="Other">]</span><span class="Other">(</span><span class="Identifier">finder</span><span class="Other">:</span> <span class="Identifier">F</span><span class="Other">;</span> <span class="Identifier">startFrom</span><span class="Other">,</span> <span class="Identifier">endTo</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">F</span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#lastTimeModified%2CF%2Cstring%2Cstring"><span class="Identifier">lastTimeModified</span></a><span class="Other">[</span><span class="Identifier">F</span><span class="Other">:</span> <a href="index.html#Finder"><span class="Identifier">Finder</span></a><span class="Other">]</span><span class="Other">(</span><span class="Identifier">finder</span><span class="Other">:</span> <span class="Identifier">F</span><span class="Other">;</span> <span class="Identifier">startFrom</span><span class="Other">,</span> <span class="Identifier">endTo</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">F</span></pre></dt>
 <dd>
 
 Search for files or directories by last modified dates.
@@ -944,7 +944,7 @@ Search for files or directories by last modified dates.
 </dd>
 </div>
 <div id="len,Results">
-<dt><pre><span class="Keyword">proc</span> <a href="#len%2CResults"><span class="Identifier">len</span></a><span class="Other">(</span><span class="Identifier">res</span><span class="Other">:</span> <a href="find.html#Results"><span class="Identifier">Results</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">int</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#len%2CResults"><span class="Identifier">len</span></a><span class="Other">(</span><span class="Identifier">res</span><span class="Other">:</span> <a href="index.html#Results"><span class="Identifier">Results</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">int</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
 
 Return the number of items in current <tt class="docutils literal"><span class="pre"><span class="Identifier">Results</span></span></tt>.
@@ -984,7 +984,7 @@ FSize of <tt class="docutils literal"><span class="pre"><span class="Identifier"
 </dd>
 </div>
 <div id="name,Finder,Regex">
-<dt><pre><span class="Keyword">proc</span> <a href="#name%2CFinder%2CRegex"><span class="Identifier">name</span></a><span class="Other">(</span><span class="Identifier">finder</span><span class="Other">:</span> <a href="find.html#Finder"><span class="Identifier">Finder</span></a><span class="Other">;</span> <span class="Identifier">pattern</span><span class="Other">:</span> <span class="Identifier">Regex</span><span class="Other">)</span><span class="Other">:</span> <a href="find.html#Finder"><span class="Identifier">Finder</span></a> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#name%2CFinder%2CRegex"><span class="Identifier">name</span></a><span class="Other">(</span><span class="Identifier">finder</span><span class="Other">:</span> <a href="index.html#Finder"><span class="Identifier">Finder</span></a><span class="Other">;</span> <span class="Identifier">pattern</span><span class="Other">:</span> <span class="Identifier">Regex</span><span class="Other">)</span><span class="Other">:</span> <a href="index.html#Finder"><span class="Identifier">Finder</span></a> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
 
 
@@ -992,7 +992,7 @@ FSize of <tt class="docutils literal"><span class="pre"><span class="Identifier"
 </dd>
 </div>
 <div id="name,Finder,string">
-<dt><pre><span class="Keyword">proc</span> <a href="#name%2CFinder%2Cstring"><span class="Identifier">name</span></a><span class="Other">(</span><span class="Identifier">finder</span><span class="Other">:</span> <a href="find.html#Finder"><span class="Identifier">Finder</span></a><span class="Other">;</span> <span class="Identifier">pattern</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <a href="find.html#Finder"><span class="Identifier">Finder</span></a> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#name%2CFinder%2Cstring"><span class="Identifier">name</span></a><span class="Other">(</span><span class="Identifier">finder</span><span class="Other">:</span> <a href="index.html#Finder"><span class="Identifier">Finder</span></a><span class="Other">;</span> <span class="Identifier">pattern</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <a href="index.html#Finder"><span class="Identifier">Finder</span></a> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
 
 Add one file name for searching
@@ -1000,7 +1000,7 @@ Add one file name for searching
 </dd>
 </div>
 <div id="only,R,DateTime">
-<dt><pre><span class="Keyword">proc</span> <a href="#only%2CR%2CDateTime"><span class="Identifier">only</span></a><span class="Other">[</span><span class="Identifier">R</span><span class="Other">:</span> <a href="find.html#Results"><span class="Identifier">Results</span></a><span class="Other">]</span><span class="Other">(</span><span class="Identifier">res</span><span class="Other">:</span> <span class="Identifier">R</span><span class="Other">;</span> <span class="Identifier">dateTime</span><span class="Other">:</span> <span class="Identifier">DateTime</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">R</span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#only%2CR%2CDateTime"><span class="Identifier">only</span></a><span class="Other">[</span><span class="Identifier">R</span><span class="Other">:</span> <a href="index.html#Results"><span class="Identifier">Results</span></a><span class="Other">]</span><span class="Other">(</span><span class="Identifier">res</span><span class="Other">:</span> <span class="Identifier">R</span><span class="Other">;</span> <span class="Identifier">dateTime</span><span class="Other">:</span> <span class="Identifier">DateTime</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">R</span></pre></dt>
 <dd>
 
 Refine the current Results table by DateTime.
@@ -1008,7 +1008,7 @@ Refine the current Results table by DateTime.
 </dd>
 </div>
 <div id="only,R,TimeInterval">
-<dt><pre><span class="Keyword">proc</span> <a href="#only%2CR%2CTimeInterval"><span class="Identifier">only</span></a><span class="Other">[</span><span class="Identifier">R</span><span class="Other">:</span> <a href="find.html#Results"><span class="Identifier">Results</span></a><span class="Other">]</span><span class="Other">(</span><span class="Identifier">res</span><span class="Other">:</span> <span class="Identifier">R</span><span class="Other">;</span> <span class="Identifier">interval</span><span class="Other">:</span> <span class="Identifier">TimeInterval</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">R</span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#only%2CR%2CTimeInterval"><span class="Identifier">only</span></a><span class="Other">[</span><span class="Identifier">R</span><span class="Other">:</span> <a href="index.html#Results"><span class="Identifier">Results</span></a><span class="Other">]</span><span class="Other">(</span><span class="Identifier">res</span><span class="Other">:</span> <span class="Identifier">R</span><span class="Other">;</span> <span class="Identifier">interval</span><span class="Other">:</span> <span class="Identifier">TimeInterval</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">R</span></pre></dt>
 <dd>
 
 
@@ -1016,7 +1016,7 @@ Refine the current Results table by DateTime.
 </dd>
 </div>
 <div id="recursive,F">
-<dt><pre><span class="Keyword">proc</span> <a href="#recursive%2CF"><span class="Identifier">recursive</span></a><span class="Other">[</span><span class="Identifier">F</span><span class="Other">:</span> <a href="find.html#Finder"><span class="Identifier">Finder</span></a><span class="Other">]</span><span class="Other">(</span><span class="Identifier">finder</span><span class="Other">:</span> <span class="Identifier">F</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">F</span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#recursive%2CF"><span class="Identifier">recursive</span></a><span class="Other">[</span><span class="Identifier">F</span><span class="Other">:</span> <a href="index.html#Finder"><span class="Identifier">Finder</span></a><span class="Other">]</span><span class="Other">(</span><span class="Identifier">finder</span><span class="Other">:</span> <span class="Identifier">F</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">F</span></pre></dt>
 <dd>
 
 
@@ -1024,7 +1024,7 @@ Refine the current Results table by DateTime.
 </dd>
 </div>
 <div id="size,F,FSize">
-<dt><pre><span class="Keyword">proc</span> <a href="#size%2CF%2CFSize"><span class="Identifier">size</span></a><span class="Other">[</span><span class="Identifier">F</span><span class="Other">:</span> <a href="find.html#Finder"><span class="Identifier">Finder</span></a><span class="Other">]</span><span class="Other">(</span><span class="Identifier">finder</span><span class="Other">:</span> <span class="Identifier">F</span><span class="Other">;</span> <span class="Identifier">fs</span><span class="Other">:</span> <span class="Identifier">FSize</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">F</span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#size%2CF%2CFSize"><span class="Identifier">size</span></a><span class="Other">[</span><span class="Identifier">F</span><span class="Other">:</span> <a href="index.html#Finder"><span class="Identifier">Finder</span></a><span class="Other">]</span><span class="Other">(</span><span class="Identifier">finder</span><span class="Other">:</span> <span class="Identifier">F</span><span class="Other">;</span> <span class="Identifier">fs</span><span class="Other">:</span> <span class="Identifier">FSize</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">F</span></pre></dt>
 <dd>
 
 
@@ -1032,7 +1032,7 @@ Refine the current Results table by DateTime.
 </dd>
 </div>
 <div id="size,F,FSize,FSize">
-<dt><pre><span class="Keyword">proc</span> <a href="#size%2CF%2CFSize%2CFSize"><span class="Identifier">size</span></a><span class="Other">[</span><span class="Identifier">F</span><span class="Other">:</span> <a href="find.html#Finder"><span class="Identifier">Finder</span></a><span class="Other">]</span><span class="Other">(</span><span class="Identifier">finder</span><span class="Other">:</span> <span class="Identifier">F</span><span class="Other">;</span> <span class="Identifier">min</span><span class="Other">,</span> <span class="Identifier">max</span><span class="Other">:</span> <span class="Identifier">FSize</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">F</span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#size%2CF%2CFSize%2CFSize"><span class="Identifier">size</span></a><span class="Other">[</span><span class="Identifier">F</span><span class="Other">:</span> <a href="index.html#Finder"><span class="Identifier">Finder</span></a><span class="Other">]</span><span class="Other">(</span><span class="Identifier">finder</span><span class="Other">:</span> <span class="Identifier">F</span><span class="Other">;</span> <span class="Identifier">min</span><span class="Other">,</span> <span class="Identifier">max</span><span class="Other">:</span> <span class="Identifier">FSize</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">F</span></pre></dt>
 <dd>
 
 
@@ -1040,7 +1040,7 @@ Refine the current Results table by DateTime.
 </dd>
 </div>
 <div id="size,R">
-<dt><pre><span class="Keyword">proc</span> <a href="#size%2CR"><span class="Identifier">size</span></a><span class="Other">[</span><span class="Identifier">R</span><span class="Other">:</span> <a href="find.html#Results"><span class="Identifier">Results</span></a><span class="Other">]</span><span class="Other">(</span><span class="Identifier">res</span><span class="Other">:</span> <span class="Identifier">R</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">R</span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#size%2CR"><span class="Identifier">size</span></a><span class="Other">[</span><span class="Identifier">R</span><span class="Other">:</span> <a href="index.html#Results"><span class="Identifier">Results</span></a><span class="Other">]</span><span class="Other">(</span><span class="Identifier">res</span><span class="Other">:</span> <span class="Identifier">R</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">R</span></pre></dt>
 <dd>
 
 Filter current results by size
@@ -1048,7 +1048,7 @@ Filter current results by size
 </dd>
 </div>
 <div id="sortByAccessedTime,R">
-<dt><pre><span class="Keyword">proc</span> <a href="#sortByAccessedTime%2CR"><span class="Identifier">sortByAccessedTime</span></a><span class="Other">[</span><span class="Identifier">R</span><span class="Other">:</span> <a href="find.html#Results"><span class="Identifier">Results</span></a><span class="Other">]</span><span class="Other">(</span><span class="Identifier">res</span><span class="Other">:</span> <span class="Identifier">R</span><span class="Other">;</span>
+<dt><pre><span class="Keyword">proc</span> <a href="#sortByAccessedTime%2CR"><span class="Identifier">sortByAccessedTime</span></a><span class="Other">[</span><span class="Identifier">R</span><span class="Other">:</span> <a href="index.html#Results"><span class="Identifier">Results</span></a><span class="Other">]</span><span class="Other">(</span><span class="Identifier">res</span><span class="Other">:</span> <span class="Identifier">R</span><span class="Other">;</span>
                                     <span class="Identifier">order</span><span class="Other">:</span> <span class="Identifier">algorithm</span><span class="Other">.</span><span class="Identifier">SortOrder</span> <span class="Other">=</span> <span class="Identifier">Descending</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">R</span></pre></dt>
 <dd>
 
@@ -1057,7 +1057,7 @@ Sorts files and directories by the last accessed time This is the time that the 
 </dd>
 </div>
 <div id="sortByCreationTime,R">
-<dt><pre><span class="Keyword">proc</span> <a href="#sortByCreationTime%2CR"><span class="Identifier">sortByCreationTime</span></a><span class="Other">[</span><span class="Identifier">R</span><span class="Other">:</span> <a href="find.html#Results"><span class="Identifier">Results</span></a><span class="Other">]</span><span class="Other">(</span><span class="Identifier">res</span><span class="Other">:</span> <span class="Identifier">R</span><span class="Other">;</span>
+<dt><pre><span class="Keyword">proc</span> <a href="#sortByCreationTime%2CR"><span class="Identifier">sortByCreationTime</span></a><span class="Other">[</span><span class="Identifier">R</span><span class="Other">:</span> <a href="index.html#Results"><span class="Identifier">Results</span></a><span class="Other">]</span><span class="Other">(</span><span class="Identifier">res</span><span class="Other">:</span> <span class="Identifier">R</span><span class="Other">;</span>
                                     <span class="Identifier">order</span><span class="Other">:</span> <span class="Identifier">algorithm</span><span class="Other">.</span><span class="Identifier">SortOrder</span> <span class="Other">=</span> <span class="Identifier">Descending</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">R</span></pre></dt>
 <dd>
 
@@ -1066,7 +1066,7 @@ Sorts files and directories by creation time
 </dd>
 </div>
 <div id="sortByModifiedTime,R">
-<dt><pre><span class="Keyword">proc</span> <a href="#sortByModifiedTime%2CR"><span class="Identifier">sortByModifiedTime</span></a><span class="Other">[</span><span class="Identifier">R</span><span class="Other">:</span> <a href="find.html#Results"><span class="Identifier">Results</span></a><span class="Other">]</span><span class="Other">(</span><span class="Identifier">res</span><span class="Other">:</span> <span class="Identifier">R</span><span class="Other">;</span>
+<dt><pre><span class="Keyword">proc</span> <a href="#sortByModifiedTime%2CR"><span class="Identifier">sortByModifiedTime</span></a><span class="Other">[</span><span class="Identifier">R</span><span class="Other">:</span> <a href="index.html#Results"><span class="Identifier">Results</span></a><span class="Other">]</span><span class="Other">(</span><span class="Identifier">res</span><span class="Other">:</span> <span class="Identifier">R</span><span class="Other">;</span>
                                     <span class="Identifier">order</span><span class="Other">:</span> <span class="Identifier">algorithm</span><span class="Other">.</span><span class="Identifier">SortOrder</span> <span class="Other">=</span> <span class="Identifier">Descending</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">R</span></pre></dt>
 <dd>
 
@@ -1075,7 +1075,7 @@ Sorts files and directories by the last modified time
 </dd>
 </div>
 <div id="sortByName,R">
-<dt><pre><span class="Keyword">proc</span> <a href="#sortByName%2CR"><span class="Identifier">sortByName</span></a><span class="Other">[</span><span class="Identifier">R</span><span class="Other">:</span> <a href="find.html#Results"><span class="Identifier">Results</span></a><span class="Other">]</span><span class="Other">(</span><span class="Identifier">res</span><span class="Other">:</span> <span class="Identifier">R</span><span class="Other">;</span> <span class="Identifier">order</span><span class="Other">:</span> <span class="Identifier">algorithm</span><span class="Other">.</span><span class="Identifier">SortOrder</span> <span class="Other">=</span> <span class="Identifier">Ascending</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">R</span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#sortByName%2CR"><span class="Identifier">sortByName</span></a><span class="Other">[</span><span class="Identifier">R</span><span class="Other">:</span> <a href="index.html#Results"><span class="Identifier">Results</span></a><span class="Other">]</span><span class="Other">(</span><span class="Identifier">res</span><span class="Other">:</span> <span class="Identifier">R</span><span class="Other">;</span> <span class="Identifier">order</span><span class="Other">:</span> <span class="Identifier">algorithm</span><span class="Other">.</span><span class="Identifier">SortOrder</span> <span class="Other">=</span> <span class="Identifier">Ascending</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">R</span></pre></dt>
 <dd>
 
 Sorts files and directories by name
@@ -1083,7 +1083,7 @@ Sorts files and directories by name
 </dd>
 </div>
 <div id="sortBySize,R">
-<dt><pre><span class="Keyword">proc</span> <a href="#sortBySize%2CR"><span class="Identifier">sortBySize</span></a><span class="Other">[</span><span class="Identifier">R</span><span class="Other">:</span> <a href="find.html#Results"><span class="Identifier">Results</span></a><span class="Other">]</span><span class="Other">(</span><span class="Identifier">res</span><span class="Other">:</span> <span class="Identifier">R</span><span class="Other">;</span> <span class="Identifier">order</span><span class="Other">:</span> <span class="Identifier">algorithm</span><span class="Other">.</span><span class="Identifier">SortOrder</span> <span class="Other">=</span> <span class="Identifier">Descending</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">R</span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#sortBySize%2CR"><span class="Identifier">sortBySize</span></a><span class="Other">[</span><span class="Identifier">R</span><span class="Other">:</span> <a href="index.html#Results"><span class="Identifier">Results</span></a><span class="Other">]</span><span class="Other">(</span><span class="Identifier">res</span><span class="Other">:</span> <span class="Identifier">R</span><span class="Other">;</span> <span class="Identifier">order</span><span class="Other">:</span> <span class="Identifier">algorithm</span><span class="Other">.</span><span class="Identifier">SortOrder</span> <span class="Other">=</span> <span class="Identifier">Descending</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">R</span></pre></dt>
 <dd>
 
 Sorts files and directories by size
@@ -1091,7 +1091,7 @@ Sorts files and directories by size
 </dd>
 </div>
 <div id="sortByType,R">
-<dt><pre><span class="Keyword">proc</span> <a href="#sortByType%2CR"><span class="Identifier">sortByType</span></a><span class="Other">[</span><span class="Identifier">R</span><span class="Other">:</span> <a href="find.html#Results"><span class="Identifier">Results</span></a><span class="Other">]</span><span class="Other">(</span><span class="Identifier">res</span><span class="Other">:</span> <span class="Identifier">R</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">R</span></pre></dt>
+<dt><pre><span class="Keyword">proc</span> <a href="#sortByType%2CR"><span class="Identifier">sortByType</span></a><span class="Other">[</span><span class="Identifier">R</span><span class="Other">:</span> <a href="index.html#Results"><span class="Identifier">Results</span></a><span class="Other">]</span><span class="Other">(</span><span class="Identifier">res</span><span class="Other">:</span> <span class="Identifier">R</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">R</span></pre></dt>
 <dd>
 
 Sorts files and directories by type (directories before files), then by name
@@ -1136,7 +1136,7 @@ FSize of <tt class="docutils literal"><span class="pre"><span class="Identifier"
 <h1><a class="toc-backref" href="#15">Iterators</a></h1>
 <dl class="item">
 <div id="dirs.i,Results">
-<dt><pre><span class="Keyword">iterator</span> <a href="#dirs.i%2CResults"><span class="Identifier">dirs</span></a><span class="Other">(</span><span class="Identifier">res</span><span class="Other">:</span> <a href="find.html#Results"><span class="Identifier">Results</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Directory</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+<dt><pre><span class="Keyword">iterator</span> <a href="#dirs.i%2CResults"><span class="Identifier">dirs</span></a><span class="Other">(</span><span class="Identifier">res</span><span class="Other">:</span> <a href="index.html#Results"><span class="Identifier">Results</span></a><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">Directory</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
 
 
@@ -1144,7 +1144,7 @@ FSize of <tt class="docutils literal"><span class="pre"><span class="Identifier"
 </dd>
 </div>
 <div id="files.i,Results">
-<dt><pre><span class="Keyword">iterator</span> <a href="#files.i%2CResults"><span class="Identifier">files</span></a><span class="Other">(</span><span class="Identifier">res</span><span class="Other">:</span> <a href="find.html#Results"><span class="Identifier">Results</span></a><span class="Other">)</span><span class="Other">:</span> <a href="find.html#FileFinder"><span class="Identifier">FileFinder</span></a> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+<dt><pre><span class="Keyword">iterator</span> <a href="#files.i%2CResults"><span class="Identifier">files</span></a><span class="Other">(</span><span class="Identifier">res</span><span class="Other">:</span> <a href="index.html#Results"><span class="Identifier">Results</span></a><span class="Other">)</span><span class="Other">:</span> <a href="index.html#FileFinder"><span class="Identifier">FileFinder</span></a> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
 
 
@@ -1182,7 +1182,7 @@ FSize of <tt class="docutils literal"><span class="pre"><span class="Identifier"
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2023-01-25 15:56:21 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2023-01-25 19:17:41 UTC</small>
       </div>
     </div>
   </div>
