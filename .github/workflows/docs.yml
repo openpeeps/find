@@ -29,6 +29,9 @@ jobs:
       - name: "Find and replace (find.idx)"
         run: sed -i 's/find.html/index.html/g' ${{ env.deploy-dir }}/find.idx
         
+      - name: "Find and replace (theindex.html)"
+        run: sed -i 's/find.html/index.html/g' ${{ env.deploy-dir }}/theindex.html
+        
       - name: Deploy documents
         uses: peaceiris/actions-gh-pages@v3
         with:
