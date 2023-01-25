@@ -3,6 +3,8 @@ on:
   push:
     tags:
       - '*.*.*'
+    branches:
+      - main
 env:
   nim-version: 'stable'
   nim-src: src/${{ github.event.repository.name }}.nim
@@ -17,17 +19,18 @@ jobs:
           nim-version: ${{ env.nim-version }}
       - run: nimble install -Y
       - run: nimble doc --index:off --project --out:${{ env.deploy-dir }} ${{ env.nim-src }}
+      
       - name: "Rename to index.html"
         run: mv ${{ env.deploy-dir }}/${{ github.event.repository.name }}.html ${{ env.deploy-dir }}/index.html 
+      
+      - name: "Find and replace (index.html)"
+        run: sed -i 's/find.html/index.html/g' ${{ env.deploy-dir }}/index.html
+      
+      - name: "Find and replace (find.idx)"
+        run: sed -i 's/find.html/index.html/g' ${{ env.deploy-dir }}/find.idx
+        
       - name: Deploy documents
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ${{ env.deploy-dir }}
-        # with:
-        #   deploy_key: ${{ secrets.DEPLOY_KEY }}
-        #   external_repository: openpeep/openpeep.github.io
-        #   publish_dir: ${{ env.deploy-dir }}
-        #   destination_dir: ./find
-        #   publish_branch: main
-        #   enable_jekyll: false
