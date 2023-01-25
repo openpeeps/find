@@ -8,7 +8,7 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/">API reference</a> | <img src="https://github.com/openpeep/find/workflows/test/badge.svg" alt="Github Actions">
+  <a href="https://openpeep.github.io/find/">API reference</a> | <img src="https://github.com/openpeep/find/workflows/test/badge.svg" alt="Github Actions">
 </p>
 
 ## 😍 Key Features
@@ -41,7 +41,7 @@ for file in res.files:
   echo file.getName 
 ```
 
-For more examples check [/tests](https://github.com/openpeep/find/tree/main/tests) | [API reference](https://github.com)
+For more examples check [/tests](https://github.com/openpeep/find/tree/main/tests) | [API reference](https://openpeep.github.io/find/)
 
 ### ❤ Contributions & Support
 - 🐛 Found a bug? [Create a new Issue](https://github.com/openpeep/find/issues)
