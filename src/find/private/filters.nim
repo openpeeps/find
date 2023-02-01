@@ -72,7 +72,7 @@ template Today*(): DateTime = now()
 template Yesterday*(): DateTime = now() - 1.days
 
 proc only*[R: Results](res: R, dateTime: DateTime): R =
-  ## Refine the current Results table by DateTime.
+  ## Refine the current `Results` table by `DateTime`.
   var i = 0
   var paths: seq[string]
   let dateFormat = "yyyy-MM-dd"
@@ -86,4 +86,5 @@ proc only*[R: Results](res: R, dateTime: DateTime): R =
   result = res
 
 proc only*[R: Results](res: R, interval: TimeInterval): R =
+  ## Refine the current `Results` table by `TimeInterval`
   result = res.only(now() - interval)

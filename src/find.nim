@@ -162,8 +162,10 @@ proc get*(finder: Finder): Results =
   result = finder.results
 
 when isMainModule:
+  from std/times import cpuTime
+  let t = cpuTime()
   let res = finder("./examples/", driver = LOCAL).name("*.txt").get
-  for f in files(res.only(1.days).sortBySize()):
+  for f in res.sortBySize().files:
     echo f.getPath()
     echo f.getSize()
-    # echo f.getInfo()
+  echo "Done in " & $(cpuTime() - t) & " seconds"

@@ -1,6 +1,5 @@
 proc getInfo*(file: FileFinder): FileInfo =
-  ## Returns an instance of `FileInfo`
-  ## https://nim-lang.org/docs/os.html#FileInfo
+  ## Returns an instance of [FileInfo](https://nim-lang.org/docs/os.html#FileInfo)
   result = file.info
 
 proc getName*(file: FileFinder): string =
