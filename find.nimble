@@ -5,6 +5,7 @@ author        = "George Lemon"
 description   = "A new awesome nimble package"
 license       = "MIT"
 srcDir        = "src"
+skipDirs      = @["examples"]
 
 
 # Dependencies
@@ -13,8 +14,8 @@ requires "nim >= 1.6.10"
 requires "libssh2"
 
 task tests, "Run test":
-    exec "testament p 'tests/*.nim'"
+  exec "testament p 'tests/*.nim'"
 
 task dev, "dev":
-    echo "\n✨ Compiling..." & "\n"
-    exec "nim c --gc:arc --out:bin/finder --hints:off src/find.nim"
+  echo "\n✨ Compiling..." & "\n"
+  exec "nim c --gc:arc --out:bin/finder src/find.nim"
