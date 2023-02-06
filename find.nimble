@@ -2,7 +2,7 @@
 
 version       = "0.1.0"
 author        = "George Lemon"
-description   = "A new awesome nimble package"
+description   = "Finds files and directories based on different criteria via an intuitive fluent interface"
 license       = "MIT"
 srcDir        = "src"
 skipDirs      = @["examples"]
