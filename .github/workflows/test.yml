@@ -23,6 +23,10 @@ jobs:
         with:
           nim-version: ${{ matrix.nim-version }}
           repo-token: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Install libpcre
+        run: sudo apt-get install -y libpcre3-dev
+
       - run: nimble install -Y
       - run: nim c -r src/find.nim
       - run: nimble test
