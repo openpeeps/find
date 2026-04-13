@@ -1,83 +1,33 @@
-FinderDriverType	index.html#FinderDriverType	find: FinderDriverType	
-SearchInFiles	index.html#SearchInFiles	SearchType.SearchInFiles	
-SearchInDirectories	index.html#SearchInDirectories	SearchType.SearchInDirectories	
-SearchType	index.html#SearchType	find: SearchType	
-SortByModifiedTime	index.html#SortByModifiedTime	SortType.SortByModifiedTime	
-SortByChangedTime	index.html#SortByChangedTime	SortType.SortByChangedTime	
-SortByAccessedTime	index.html#SortByAccessedTime	SortType.SortByAccessedTime	
-SortByType	index.html#SortByType	SortType.SortByType	
-SortByName	index.html#SortByName	SortType.SortByName	
-SortType	index.html#SortType	find: SortType	
-FileSizeOp	index.html#FileSizeOp	find: FileSizeOp	
-FileSizeUnit	index.html#FileSizeUnit	find: FileSizeUnit	
-FileFinder	index.html#FileFinder	find: FileFinder	
-Results	index.html#Results	find: Results	
-Filters	index.html#Filters	find: Filters	
-Criterias	index.html#Criterias	find: Criterias	
-LocalFinder	index.html#LocalFinder	find: LocalFinder	
-SSHFinder	index.html#SSHFinder	find: SSHFinder	
-Finder	index.html#Finder	find: Finder	
-finder	index.html#finder,string	find: finder(path = &quot;.&quot;; driver = LOCAL; searchType = SearchInFiles;\n       isRecursive = false): Finder	
-getInfo	index.html#getInfo,FileFinder	find: getInfo(file: FileFinder): FileInfo	
-getName	index.html#getName,FileFinder	find: getName(file: FileFinder): string	
-getPath	index.html#getPath,FileFinder	find: getPath(file: FileFinder): string	
-getFileSize	index.html#getFileSize,FileFinder	find: getFileSize(file: FileFinder): BiggestInt	
-getSize	index.html#getSize,FileFinder	find: getSize(file: FileFinder): string	
-getSize	index.html#getSize,FileFinder,bool	find: getSize(file: FileFinder; hideSizeLabel: bool): float	
-getLastAccessTime	index.html#getLastAccessTime,FileFinder	find: getLastAccessTime(file: FileFinder): Time	
-getLastModificationTime	index.html#getLastModificationTime,FileFinder	find: getLastModificationTime(file: FileFinder): Time	
-getCreationTime	index.html#getCreationTime,FileFinder	find: getCreationTime(file: FileFinder): Time	
-name	index.html#name,Finder,string	find: name(finder: Finder; pattern: string): Finder	
-name	index.html#name,Finder,Regex	find: name(finder: Finder; pattern: Regex): Finder	
-ext	index.html#ext,Finder,varargs[string]	find: ext(finder: Finder; fileExtension: varargs[string]): Finder	
-ext	index.html#ext,Finder,openArray[string]	find: ext(finder: Finder; fileExtensions: openArray[string]): Finder	
-lastTimeModified	index.html#lastTimeModified,F,string	find: lastTimeModified[F: Finder](finder: F; since: string): F	
-lastTimeModified	index.html#lastTimeModified,F,string,string	find: lastTimeModified[F: Finder](finder: F; startFrom, endTo: string): F	
-exclude	index.html#exclude,F,string	find: exclude[F: Finder](finder: F; pattern: string): F	
-exists	index.html#exists,F	find: exists[F: Finder](finder: F): bool	
-ignoreUnreadableDirs	index.html#ignoreUnreadableDirs,F	find: ignoreUnreadableDirs[F: Finder](finder: F): F	
-ignoreVCS	index.html#ignoreVCS,F,bool	find: ignoreVCS[F: Finder](finder: F; toIgnore: bool): F	
-recursive	index.html#recursive,F	find: recursive[F: Finder](finder: F): F	
-`==`	index.html#==,S	find: `==`[S: FSize](fs: S): S	
-`!=`	index.html#!=,S	find: `!=`[S: FSize](fs: S): S	
-`&lt;`	index.html#<,S	find: `&lt;`[S: FSize](fs: S): S	
-`&lt;=`	index.html#<=,S	find: `&lt;=`[S: FSize](fs: S): S	
-`&gt;`	index.html#>,S	find: `&gt;`[S: FSize](fs: S): S	
-`&gt;=`	index.html#>=,FSize	find: `&gt;=`(fs: FSize): FSize	
-bytes	index.html#bytes,float	find: bytes(i: float): FSize	
-kilobytes	index.html#kilobytes,float	find: kilobytes(i: float): FSize	
-megabytes	index.html#megabytes,float	find: megabytes(i: float): FSize	
-gigabytes	index.html#gigabytes,float	find: gigabytes(i: float): FSize	
-terabytes	index.html#terabytes,float	find: terabytes(i: float): FSize	
-kb	index.html#kb,int	find: kb(i: int): FSize	
-mb	index.html#mb,int	find: mb(i: int): FSize	
-gb	index.html#gb,int	find: gb(i: int): FSize	
-tb	index.html#tb,int	find: tb(i: int): FSize	
-kb	index.html#kb,float	find: kb(i: float): FSize	
-mb	index.html#mb,float	find: mb(i: float): FSize	
-gb	index.html#gb,float	find: gb(i: float): FSize	
-tb	index.html#tb,float	find: tb(i: float): FSize	
-KB	index.html#KB,float_2	find: KB(i: float): FSize	
-MB	index.html#MB,float_2	find: MB(i: float): FSize	
-GB	index.html#GB,float_2	find: GB(i: float): FSize	
-TB	index.html#TB,float_2	find: TB(i: float): FSize	
-size	index.html#size,F,FSize	find: size[F: Finder](finder: F; fs: FSize): F	
-size	index.html#size,F,FSize,FSize	find: size[F: Finder](finder: F; min, max: FSize): F	
-size	index.html#size,R	find: size[R: Results](res: R): R	
-files	index.html#files.i,Results	find: files(res: Results): FileFinder	
-dirs	index.html#dirs.i,Results	find: dirs(res: Results): Directory	
-len	index.html#len,Results	find: len(res: Results): int	
-count	index.html#count,Results	find: count(res: Results): int	
-sortByName	index.html#sortByName,R	find: sortByName[R: Results](res: R; order: algorithm.SortOrder = Ascending): R	
-sortByType	index.html#sortByType,R	find: sortByType[R: Results](res: R): R	
-sortByAccessedTime	index.html#sortByAccessedTime,R	find: sortByAccessedTime[R: Results](res: R; order: algorithm.SortOrder = Descending): R	
-sortByModifiedTime	index.html#sortByModifiedTime,R	find: sortByModifiedTime[R: Results](res: R; order: algorithm.SortOrder = Descending): R	
-sortByCreationTime	index.html#sortByCreationTime,R	find: sortByCreationTime[R: Results](res: R; order: algorithm.SortOrder = Descending): R	
-sortBySize	index.html#sortBySize,R	find: sortBySize[R: Results](res: R; order: algorithm.SortOrder = Descending): R	
-Today	index.html#Today.t	find: Today(): DateTime	
-Yesterday	index.html#Yesterday.t	find: Yesterday(): DateTime	
-only	index.html#only,R,DateTime	find: only[R: Results](res: R; dateTime: DateTime): R	
-only	index.html#only,R,TimeInterval	find: only[R: Results](res: R; interval: TimeInterval): R	
-Submodule	index.html#Submodule	find: Submodule	
-initSubmodule	index.html#initSubmodule	find: initSubmodule(): Submodule	
-get	index.html#get,Finder	find: get(finder: Finder): Results	
+nimTitle	find	index.html	module src/find		0
+nim	fkAny	index.html#fkAny	FinderSearchKind.fkAny		19
+nim	fkFile	index.html#fkFile	FinderSearchKind.fkFile		19
+nim	fkDir	index.html#fkDir	FinderSearchKind.fkDir		19
+nim	fkLinkToFile	index.html#fkLinkToFile	FinderSearchKind.fkLinkToFile		19
+nim	fkLinkToDir	index.html#fkLinkToDir	FinderSearchKind.fkLinkToDir		19
+nim	FinderSearchKind	index.html#FinderSearchKind	enum FinderSearchKind		19
+nim	Bytes	index.html#Bytes_2	FileSizeUnit.Bytes		23
+nim	Kilobytes	index.html#Kilobytes_2	FileSizeUnit.Kilobytes		23
+nim	Megabytes	index.html#Megabytes_2	FileSizeUnit.Megabytes		23
+nim	Gigabytes	index.html#Gigabytes_2	FileSizeUnit.Gigabytes		23
+nim	Terabytes	index.html#Terabytes_2	FileSizeUnit.Terabytes		23
+nim	FileSizeUnit	index.html#FileSizeUnit_2	enum FileSizeUnit		23
+nim	Finder	index.html#Finder	type Finder		30
+nim	isVcsPath	index.html#isVcsPath,string	proc isVcsPath(path: string): bool		269
+nim	newFinder	index.html#newFinder,FinderSearchKind	proc newFinder(kind: FinderSearchKind = fkFile): Finder		276
+nim	finder	index.html#finder,FinderSearchKind	proc finder(kind: FinderSearchKind = fkFile): Finder		280
+nim	path	index.html#path,Finder,string	proc path(f: Finder; root: string): Finder		284
+nim	recursive	index.html#recursive,Finder	proc recursive(f: Finder; enabled = true): Finder		291
+nim	name	index.html#name,Finder,string	proc name(f: Finder; pattern: string): Finder		296
+nim	ext	index.html#ext,Finder,string	proc ext(f: Finder; extension: string): Finder		301
+nim	parseSize	index.html#parseSize,string	proc parseSize(raw: string): int64		309
+nim	largerThan	index.html#largerThan,Finder,FSize	proc largerThan(f: Finder; size: FSize): Finder		326
+nim	smallerThan	index.html#smallerThan,Finder,FSize	proc smallerThan(f: Finder; size: FSize): Finder		332
+nim	size	index.html#size,Finder,FSize	proc size(f: Finder; rule: FSize): Finder		338
+nim	modifiedAfter	index.html#modifiedAfter,Finder,Time	proc modifiedAfter(f: Finder; t: Time): Finder		342
+nim	modifiedBefore	index.html#modifiedBefore,Finder,Time	proc modifiedBefore(f: Finder; t: Time): Finder		347
+nim	namePattern	index.html#namePattern,Finder,string	proc namePattern(f: Finder; pattern: string): Finder		352
+nim	pathRegex	index.html#pathRegex,Finder,string	proc pathRegex(f: Finder; pattern: string): Finder		358
+nim	contains	index.html#contains,Finder,string	proc contains(f: Finder; pattern: string): Finder		364
+nim	notContains	index.html#notContains,Finder,string	proc notContains(f: Finder; pattern: string): Finder		372
+nim	find	index.html#find.i,Finder	iterator find(f: Finder): string		380
+nim	collect	index.html#collect,Finder,seq[string]	proc collect(f: Finder; res: var seq[string])		416

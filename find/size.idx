@@ -1,0 +1,46 @@
+nimTitle	size	find/size.html	module src/find/size		0
+nim	soNone	find/size.html#soNone	SizeOp.soNone		2
+nim	EQ	find/size.html#EQ	SizeOp.EQ		2
+nim	NE	find/size.html#NE	SizeOp.NE		2
+nim	LT	find/size.html#LT	SizeOp.LT		2
+nim	LTE	find/size.html#LTE	SizeOp.LTE		2
+nim	GT	find/size.html#GT	SizeOp.GT		2
+nim	GTE	find/size.html#GTE	SizeOp.GTE		2
+nim	SizeOp	find/size.html#SizeOp	enum SizeOp		2
+nim	Bytes	find/size.html#Bytes	FileSizeUnit.Bytes		5
+nim	Kilobytes	find/size.html#Kilobytes	FileSizeUnit.Kilobytes		5
+nim	Megabytes	find/size.html#Megabytes	FileSizeUnit.Megabytes		5
+nim	Gigabytes	find/size.html#Gigabytes	FileSizeUnit.Gigabytes		5
+nim	Terabytes	find/size.html#Terabytes	FileSizeUnit.Terabytes		5
+nim	FileSizeUnit	find/size.html#FileSizeUnit	enum FileSizeUnit		5
+nim	FSize	find/size.html#FSize	type FSize		12
+nim	toBytes	find/size.html#toBytes,float64,FileSizeUnit	proc toBytes(size: float64; unit: FileSizeUnit = Bytes): int64		18
+nim	`==`	find/size.html#==,FSize	proc `==`(fs: FSize): FSize		34
+nim	`!=`	find/size.html#!=,FSize	proc `!=`(fs: FSize): FSize		35
+nim	`<`	find/size.html#<,FSize	proc `<`(fs: FSize): FSize		36
+nim	`<=`	find/size.html#<=,FSize	proc `<=`(fs: FSize): FSize		37
+nim	`>`	find/size.html#>,FSize	proc `>`(fs: FSize): FSize		38
+nim	`>=`	find/size.html#>=,FSize	proc `>=`(fs: FSize): FSize		39
+nim	bytes	find/size.html#bytes,int	proc bytes(i: int): FSize		41
+nim	bytes	find/size.html#bytes,float	proc bytes(i: float): FSize		42
+nim	kilobytes	find/size.html#kilobytes,float	proc kilobytes(i: float): FSize		44
+nim	megabytes	find/size.html#megabytes,float	proc megabytes(i: float): FSize		45
+nim	gigabytes	find/size.html#gigabytes,float	proc gigabytes(i: float): FSize		46
+nim	terabytes	find/size.html#terabytes,float	proc terabytes(i: float): FSize		47
+nim	kb	find/size.html#kb,int	proc kb(i: int): FSize		49
+nim	mb	find/size.html#mb,int	proc mb(i: int): FSize		50
+nim	gb	find/size.html#gb,int	proc gb(i: int): FSize		51
+nim	tb	find/size.html#tb,int	proc tb(i: int): FSize		52
+nim	kb	find/size.html#kb,float	proc kb(i: float): FSize		54
+nim	mb	find/size.html#mb,float	proc mb(i: float): FSize		55
+nim	gb	find/size.html#gb,float	proc gb(i: float): FSize		56
+nim	tb	find/size.html#tb,float	proc tb(i: float): FSize		57
+nim	KB	find/size.html#KB,float_2	proc KB(i: float): FSize		59
+nim	MB	find/size.html#MB,float_2	proc MB(i: float): FSize		60
+nim	GB	find/size.html#GB,float_2	proc GB(i: float): FSize		61
+nim	TB	find/size.html#TB,float_2	proc TB(i: float): FSize		62
+nimgrp	tb	find/size.html#tb-procs-all	proc		52
+nimgrp	bytes	find/size.html#bytes-procs-all	proc		41
+nimgrp	mb	find/size.html#mb-procs-all	proc		50
+nimgrp	kb	find/size.html#kb-procs-all	proc		49
+nimgrp	gb	find/size.html#gb-procs-all	proc		51
