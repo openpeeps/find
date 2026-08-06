@@ -1,6 +1,6 @@
 # A super fast template engine for cool kids
 #
-# (c) 2026 George Lemon | LGPL-v3 License
+# (c) 2026 George Lemon | MIT License
 #          Made by Humans from OpenPeeps
 #          https://github.com/openpeeps/find
 
@@ -205,6 +205,8 @@ proc matchesFilters(f: Finder, path: string, isDir: bool): bool =
   if isDir and f.kind notin {fkAny, fkDir, fkLinkToDir}: return false
   if (not isDir) and f.kind notin {fkAny, fkFile, fkLinkToFile}: return false
   if not f.matchesName(path): return false
+
+  result = isDir
 
   # Size filters (applies only to files)
   if not isDir:
